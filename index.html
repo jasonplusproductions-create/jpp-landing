@@ -122,12 +122,12 @@
             color: #fff;
         }
 
-        .subdomain-links li:nth-child(3) a {
+        .subdomain-links li:nth-child(3) a:not(.nav-coming-soon) {
             color: var(--tertiary);
             border: 1px solid var(--tertiary);
         }
 
-        .subdomain-links li:nth-child(3) a:hover {
+        .subdomain-links li:nth-child(3) a:not(.nav-coming-soon):hover {
             background-color: var(--tertiary);
             color: #000;
         }
@@ -140,6 +140,16 @@
         .subdomain-links li:nth-child(4) a:hover {
             background-color: var(--accent-pink);
             color: #fff;
+        }
+
+        .nav-coming-soon {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            color: #666;
+            border: 1px solid #444;
+            cursor: default;
         }
 
         /* Hero Section */
@@ -639,6 +649,17 @@
             background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-blue) 100%);
         }
 
+        .service-cta.coming-soon {
+            color: #888;
+            border: 1px solid #555;
+            cursor: default;
+        }
+
+        .service-cta.coming-soon:hover {
+            color: #888;
+            background: transparent;
+        }
+
         /* Footer */
         footer {
             background-color: #000;
@@ -721,10 +742,10 @@
         <a href="#home" class="nav-logo">Jason Plus Productions</a>
         <div class="nav-container">
             <ul class="subdomain-links">
-                <li><a href="https://vocalstudio.jasonplusproductions.com" target="_blank">Vocal Studio</a></li>
-                <li><a href="https://themlc.jasonplusproductions.com" target="_blank">The MLC</a></li>
-                <li><a href="https://merch.jasonplusproductions.com" target="_blank">Merch</a></li>
-                <li><a href="https://theatre.jasonplusproductions.com" target="_blank">Interactive Theatre</a></li>
+                <li><a href="https://vocalstudio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Vocal Studio</a></li>
+                <li><span class="nav-coming-soon">The MLC</span></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><span class="nav-coming-soon">Interactive Theatre</span></li>
             </ul>
             <ul class="nav-links">
                 <li><a onclick="scrollToSection('services')">Services</a></li>
@@ -759,28 +780,28 @@
                 <img src="images/flamingo-logo.png" alt="Vocal Studio Logo" class="service-icon-img">
                 <h3>Jason Hackner Vocal Studio</h3>
                 <p>Professional voice coaching and personalized vocal instruction in Charlotte. Book lessons, track progress, and unlock your vocal potential.</p>
-                <a href="https://vocalstudio.jasonplusproductions.com" class="service-cta" target="_blank">Visit Vocal Studio →</a>
+                <a href="https://vocalstudio.jasonplusproductions.com" class="service-cta" target="_blank" rel="noopener noreferrer">Visit Vocal Studio →</a>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">🎭</div>
                 <h3>Interactive Theatre</h3>
                 <p>Groundbreaking theater experiences where audiences shape the story. Faith & Freedom and Arrangements coming soon.</p>
-                <a href="https://theatre.jasonplusproductions.com" class="service-cta" target="_blank">Learn More →</a>
+                <span class="service-cta coming-soon">Coming Soon</span>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">🛍️</div>
                 <h3>Merchandise</h3>
-                <p>Official Jason Plus Productions merchandise. Show your support with exclusive apparel, accessories, and collectibles from all our ventures.</p>
-                <a href="https://merch.jasonplusproductions.com" class="service-cta" target="_blank">Shop Now →</a>
+                <p>Official Arrangements show merchandise. Premium T-shirts, signed posters, stickers, and exclusive accessories from our interactive theater productions.</p>
+                <a href="merch.html" class="service-cta">Shop Merch →</a>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">🎸</div>
                 <h3>Jason Plus The MLC</h3>
                 <p>Classic 70s-90s R&B and George Michael tribute band. Energetic live performances at venues throughout Charlotte and beyond.</p>
-                <a href="https://themlc.jasonplusproductions.com" class="service-cta" target="_blank">View Tour Dates →</a>
+                <span class="service-cta coming-soon">Coming Soon</span>
             </div>
         </div>
     </section>
@@ -905,13 +926,13 @@
                 Whether you're exploring partnerships, interested in booking performances, or want to learn more about our grant-funded initiatives—we'd love to hear from you.
             </p>
             <div class="contact-links">
-                <a href="mailto:contact@jasonplusproductions.com" class="contact-link">
-                    contact@jasonplusproductions.com
+                <a href="mailto:jasonplusproductions@gmail.com" class="contact-link">
+                    jasonplusproductions@gmail.com
                 </a>
-                <a href="tel:+1234567890" class="contact-link">
-                    (704) 555-0100
+                <a href="tel:+17042738399" class="contact-link">
+                    (704) 273-8399
                 </a>
-                <a href="https://www.instagram.com" class="contact-link" target="_blank">
+                <a href="https://www.instagram.com/jasonplusproductions" class="contact-link" target="_blank" rel="noopener noreferrer">
                     @JasonPlusProductions (Instagram)
                 </a>
             </div>
