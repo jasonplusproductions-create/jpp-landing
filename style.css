@@ -69,6 +69,20 @@ nav {
     color: var(--primary-color);
 }
 
+.nav-links a.nav-link-mlc {
+    color: var(--text-dark);
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.nav-links a.nav-link-mlc:visited {
+    color: var(--text-dark);
+}
+
+.nav-links a.nav-link-mlc:hover {
+    color: var(--primary-color);
+}
+
 .hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: var(--white);
