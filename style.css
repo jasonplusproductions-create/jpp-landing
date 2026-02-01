@@ -137,6 +137,19 @@ nav {
     color: var(--primary-color);
 }
 
+.btn-mlc {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-mlc:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
 .section {
     padding: 5rem 2rem;
 }
@@ -183,6 +196,22 @@ nav {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+}
+
+.service-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.service-card-link h3,
+.service-card-link p {
+    color: inherit;
+}
+
+.service-card-link:hover h3 {
+    color: var(--primary-dark);
 }
 
 .service-card h3 {
