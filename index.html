@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <title>Jason Plus Productions | Interactive Theater & Musical Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Color Variables */
+        :root {
+            --primary: #8B2D8F;
+            --secondary: #00C9A7;
+            --tertiary: #FFB703;
+            --accent-pink: #E91E8C;
+            --accent-blue: #00A9FF;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.2);
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(139, 45, 143, 0.3);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cccccc;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+
+        /* Subdomain Links */
+        .subdomain-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .subdomain-links li a {
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .subdomain-links li:nth-child(1) a {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .subdomain-links li:nth-child(1) a:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .subdomain-links li:nth-child(2) a {
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+
+        .subdomain-links li:nth-child(2) a:hover {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+        .subdomain-links li:nth-child(3) a:not(.nav-coming-soon) {
+            color: var(--tertiary);
+            border: 1px solid var(--tertiary);
+        }
+
+        .subdomain-links li:nth-child(3) a:not(.nav-coming-soon):hover {
+            background-color: var(--tertiary);
+            color: #000;
+        }
+
+        .subdomain-links li:nth-child(4) a {
+            color: var(--accent-pink);
+            border: 1px solid var(--accent-pink);
+        }
+
+        .subdomain-links li:nth-child(4) a:hover {
+            background-color: var(--accent-pink);
+            color: #fff;
+        }
+
+        .nav-coming-soon {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            color: #666;
+            border: 1px solid #444;
+            cursor: default;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 45, 143, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 201, 167, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 50%, #00A9FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #999999;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #E91E8C 0%, #8B2D8F 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(139, 45, 143, 0.3);
+        }
+
+        /* Section Headers */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #bbbbbb;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #1a1a1a;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: #cccccc;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background-color: rgba(139, 45, 143, 0.1);
+            padding: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .stat-box:nth-child(2) {
+            background-color: rgba(0, 201, 167, 0.1);
+            border-left-color: var(--secondary);
+        }
+
+        .stat-box:nth-child(3) {
+            background-color: rgba(233, 30, 140, 0.1);
+            border-left-color: var(--accent-pink);
+        }
+
+        .stat-box:nth-child(4) {
+            background-color: rgba(0, 169, 255, 0.1);
+            border-left-color: var(--accent-blue);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #999999;
+            margin-top: 0.5rem;
+        }
+
+        /* Productions Grid */
+        .productions {
+            background-color: #0f0f0f;
+        }
+
+        .productions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .production-card {
+            background-color: #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.15);
+            border-top: 4px solid var(--primary);
+        }
+
+        .production-card:nth-child(2) {
+            border-top-color: var(--secondary);
+        }
+
+        .production-card:nth-child(3) {
+            border-top-color: var(--accent-pink);
+        }
+
+        .production-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(139, 45, 143, 0.25);
+        }
+
+        .production-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .production-card:nth-child(1) .production-image {
+            background: linear-gradient(135deg, rgba(139, 45, 143, 0.1) 0%, rgba(139, 45, 143, 0.2) 100%);
+        }
+
+        .production-card:nth-child(2) .production-image {
+            background: linear-gradient(135deg, rgba(0, 201, 167, 0.1) 0%, rgba(0, 201, 167, 0.2) 100%);
+        }
+
+        .production-card:nth-child(3) .production-image {
+            background: linear-gradient(135deg, rgba(233, 30, 140, 0.1) 0%, rgba(233, 30, 140, 0.2) 100%);
+        }
+
+        .production-content {
+            padding: 1.5rem;
+        }
+
+        .production-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .production-category {
+            font-size: 0.85rem;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .production-description {
+            font-size: 0.95rem;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Upcoming Musicals */
+        .upcoming {
+            background-color: #1a1a1a;
+        }
+
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .musical-hero {
+            color: #fff;
+            padding: 3rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .upcoming-grid > :nth-child(1) {
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+        }
+
+        .upcoming-grid > :nth-child(2) {
+            background: linear-gradient(135deg, #00C9A7 0%, #00A9FF 100%);
+        }
+
+        .musical-hero h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .musical-hero p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .musical-hero .badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            width: fit-content;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #0f0f0f;
+            text-align: center;
+        }
+
+        .contact-box {
+            background-color: #1a1a1a;
+            padding: 3rem;
+            border-radius: 4px;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.15);
+            border: 1px solid rgba(139, 45, 143, 0.2);
+        }
+
+        .contact-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .contact-box p {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Services Hub */
+        .services-hub {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 5rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(139, 45, 143, 0.2);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+            border: 1px solid rgba(139, 45, 143, 0.2);
+        }
+
+        .service-card:nth-child(2) {
+            border-top-color: var(--secondary);
+            border-color: rgba(0, 201, 167, 0.2);
+        }
+
+        .service-card:nth-child(3) {
+            border-top-color: var(--tertiary);
+            border-color: rgba(255, 183, 3, 0.2);
+        }
+
+        .service-card:nth-child(4) {
+            border-top-color: var(--accent-pink);
+            border-color: rgba(233, 30, 140, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 40px rgba(139, 45, 143, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-icon-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        /* About Image */
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(139, 45, 143, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Arrangements Card Styles */
+        .arrangements-card {
+            background: #000 !important;
+            padding: 0 !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .arrangements-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+        }
+
+        .arrangements-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .arrangements-overlay h3 {
+            color: #D4AF37;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arrangements-overlay p {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arrangements-overlay .badge {
+            background: rgba(212, 175, 55, 0.3);
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-cta {
+            display: inline-block;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .service-cta:hover {
+            color: #fff;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-blue) 100%);
+        }
+
+        .service-cta.coming-soon {
+            color: #888;
+            border: 1px solid #555;
+            cursor: default;
+        }
+
+        .service-cta.coming-soon:hover {
+            color: #888;
+            background: transparent;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-container {
+                align-items: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .subdomain-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .hero {
+                margin-top: 140px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .productions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-image img {
+                max-height: 400px;
+                object-fit: cover;
+            }
+
+            .arrangements-card img {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home" class="nav-logo">Jason Plus Productions</a>
+        <div class="nav-container">
+            <ul class="subdomain-links">
+                <li><a href="https://vocalstudio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Vocal Studio</a></li>
+                <li><span class="nav-coming-soon">The MLC</span></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><span class="nav-coming-soon">Interactive Theatre</span></li>
+            </ul>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('services')">Services</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('productions')">Past Work</a></li>
+                <li><a onclick="scrollToSection('upcoming')">Upcoming</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Jason Plus Productions</h1>
+            <div class="hero-tagline">Interactive Theater | Artistic Innovation | Community Impact</div>
+            <p class="hero-subtitle">
+                Your creative hub for vocal performance, live music experiences, and groundbreaking interactive theater.
+            </p>
+            <button class="cta-button" onclick="scrollToSection('services')">Explore Our Services</button>
+        </div>
+    </section>
+
+    <!-- Services Hub -->
+    <section class="services-hub" id="services">
+        <div class="section-title">Jason Plus Ecosystem</div>
+        <p class="section-subtitle">
+            Four interconnected creative ventures—all united under one artistic vision.
+        </p>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="images/flamingo-logo.png" alt="Vocal Studio Logo" class="service-icon-img">
+                <h3>Jason Hackner Vocal Studio</h3>
+                <p>Professional voice coaching and personalized vocal instruction in Charlotte. Book lessons, track progress, and unlock your vocal potential.</p>
+                <a href="https://vocalstudio.jasonplusproductions.com" class="service-cta" target="_blank" rel="noopener noreferrer">Visit Vocal Studio →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎭</div>
+                <h3>Interactive Theatre</h3>
+                <p>Groundbreaking theater experiences where audiences shape the story. Faith & Freedom and Arrangements coming soon.</p>
+                <span class="service-cta coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛍️</div>
+                <h3>Merchandise</h3>
+                <p>Official Arrangements show merchandise. Premium T-shirts, signed posters, stickers, and exclusive accessories from our interactive theater productions.</p>
+                <a href="merch.html" class="service-cta">Shop Merch →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎸</div>
+                <h3>Jason Plus The MLC</h3>
+                <p>Classic 70s-90s R&B and George Michael tribute band. Energetic live performances at venues throughout Charlotte and beyond.</p>
+                <span class="service-cta coming-soon">Coming Soon</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title">About Jason Plus Productions</div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Theater, Music & Vocal Excellence Through Active Participation</h3>
+                <p>
+                    Jason Plus Productions believes in interaction, engagement, and active participation. We don't believe in passive consumption. Whether you're stepping into a vocal lesson, jamming with a live band, or shaping the narrative of an interactive musical—you're not a spectator, you're a participant.
+                </p>
+                <p>
+                    Founded by Jason Hackner, a vocalist and theater director, Jason Plus Productions creates spaces where students become confident performers, where audiences become co-creators, and where live music becomes a conversation between artist and participant. Every experience is designed for active involvement and transformation.
+                </p>
+                <p>
+                    <strong>Our Mission:</strong> Empowering people through vocal mastery, authentic live performance, and interactive theater that demands participation, rewards engagement, and celebrates the power of doing—not just watching.
+                </p>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Performance Years</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Interactive Musicals</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Live Performances</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">Charlotte</div>
+                        <div class="stat-label">Base of Operations</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="images/jason-hackner.jpg" alt="Jason Hackner - Founder of Jason Plus Productions">
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Productions -->
+    <section class="productions" id="productions">
+        <div class="section-title">Past Productions & Performance</div>
+        <p class="section-subtitle">
+            A portfolio of live performance experience and production work showcasing artistic range and technical capability.
+        </p>
+        <div class="productions-grid">
+            <div class="production-card">
+                <div class="production-image">🎬</div>
+                <div class="production-content">
+                    <div class="production-category">Performance Clips</div>
+                    <div class="production-title">Jason Plus The MLC</div>
+                    <p class="production-description">
+                        Professional performance footage from Jason Plus The MLC tribute band, showcasing vocal performance, stage presence, and audience engagement across multiple venues in the Charlotte area.
+                    </p>
+                </div>
+            </div>
+
+            <div class="production-card">
+                <div class="production-image">📸</div>
+                <div class="production-content">
+                    <div class="production-category">Live Performance</div>
+                    <div class="production-title">Band Photography & Flyers</div>
+                    <p class="production-description">
+                        Professional photography from past performances, promotional materials, and audience engagement shots demonstrating production quality and promotional excellence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="production-card">
+                <div class="production-image">🎤</div>
+                <div class="production-content">
+                    <div class="production-category">Theater Production</div>
+                    <div class="production-title">GrandNight for Singing</div>
+                    <p class="production-description">
+                        Production photography from theatrical vocal performance work, demonstrating technical stage experience, lighting coordination, and professional production standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Musicals -->
+    <section class="upcoming" id="upcoming">
+        <div class="section-title">Upcoming Interactive Musicals</div>
+        <p class="section-subtitle">
+            Two transformative theatrical experiences currently in development, combining audience participation with original storytelling.
+        </p>
+        <div class="upcoming-grid">
+            <div class="musical-hero">
+                <h3>Faith and Freedom</h3>
+                <p>
+                    An interactive musical exploration of personal transformation and societal change. Audiences become active participants in the narrative, making choices that shape the story's trajectory and emotional arc.
+                </p>
+                <p>
+                    <strong>Themes:</strong> Identity, Growth, Community, Empowerment
+                </p>
+                <div class="badge">In Development</div>
+            </div>
+
+            <div class="musical-hero arrangements-card">
+                <img src="images/arrangements-poster.jpg" alt="Arrangements - A George Michael & Wham! Tribute Dramedy">
+                <div class="arrangements-overlay">
+                    <h3>Arrangements</h3>
+                    <p>A George Michael & Wham! tribute dramedy featuring live band, complicated cocktails, and interactive theatre.</p>
+                    <div class="badge">In Development</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">Get In Touch</div>
+        <div class="contact-box">
+            <h3>Interested in Our Work?</h3>
+            <p>
+                Whether you're exploring partnerships, interested in booking performances, or want to learn more about our grant-funded initiatives—we'd love to hear from you.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:jasonplusproductions@gmail.com" class="contact-link">
+                    jasonplusproductions@gmail.com
+                </a>
+                <a href="tel:+17042738399" class="contact-link">
+                    (704) 273-8399
+                </a>
+                <a href="https://www.instagram.com/jasonplusproductions" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    @JasonPlusProductions (Instagram)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Jason Plus Productions. All rights reserved. | Charlotte, North Carolina</p>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>

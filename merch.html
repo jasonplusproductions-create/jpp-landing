@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <title>JPP Merch | Arrangements Show Merchandise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        :root {
+            --primary: #8B2D8F;
+            --secondary: #00C9A7;
+            --tertiary: #FFB703;
+            --accent-pink: #E91E8C;
+            --accent-blue: #00A9FF;
+            --gold: #D4AF37;
+            --dark-bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.2);
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(139, 45, 143, 0.3);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cccccc;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-pink);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 50%;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(139, 45, 143, 0.05) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFB703 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #999999;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faith-freedom-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #FFB703 100%);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Product Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: #cccccc;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .category-btn[data-category="all"] {
+            border-color: var(--gold);
+        }
+
+        .category-btn[data-category="all"]:hover,
+        .category-btn[data-category="all"].active {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #999999;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 45, 143, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-pink);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .product-badge.limited {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #999999;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .product-options {
+            margin-bottom: 1rem;
+        }
+
+        .size-selector,
+        .quantity-selector {
+            margin-bottom: 0.75rem;
+        }
+
+        .size-selector label,
+        .quantity-selector label {
+            display: block;
+            font-size: 0.85rem;
+            color: #cccccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .size-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #444;
+            background: transparent;
+            color: #cccccc;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .size-btn:hover,
+        .size-btn.selected {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .quantity-input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 1px solid #444;
+            background: #2a2a2a;
+            color: white;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #FFB703 100%);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: linear-gradient(135deg, #FFB703 0%, var(--gold) 100%);
+            transform: scale(1.02);
+        }
+
+        .add-to-cart-btn:disabled {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Cart Sidebar */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            max-width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            background: #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #444;
+        }
+
+        .cart-header h2 {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .cart-close:hover {
+            color: white;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: #2a2a2a;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: #3a3a3a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-variant {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .cart-item-remove:hover {
+            color: var(--accent-pink);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .cart-empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            background: #2a2a2a;
+            border-top: 1px solid #444;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .cart-total-label {
+            font-size: 1.2rem;
+            color: #cccccc;
+        }
+
+        .cart-total-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .checkout-btn:disabled {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .cart-note {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #999;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Venue Info */
+        .venue-info {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .venue-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .venue-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .venue-info p {
+            color: #cccccc;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .venue-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .venue-feature {
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .venue-feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .venue-feature h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .venue-feature p {
+            font-size: 0.9rem;
+            color: #999;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gold);
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-container {
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .categories {
+                padding: 1rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="nav-logo">Jason Plus Productions</a>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#venue">Venue Info</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Arrangements Merch</h1>
+            <div class="hero-tagline">Official Merchandise from the George Michael & Wham! Tribute Dramedy</div>
+            <p class="hero-subtitle">
+                Premium theater merchandise featuring exclusive designs. Available at shows and online.
+            </p>
+            <div class="faith-freedom-badge">Faith or Freedom</div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <div class="categories">
+        <button class="category-btn active" data-category="all" onclick="filterProducts('all')">All Items</button>
+        <button class="category-btn" data-category="apparel" onclick="filterProducts('apparel')">Apparel</button>
+        <button class="category-btn" data-category="accessories" onclick="filterProducts('accessories')">Accessories</button>
+        <button class="category-btn" data-category="collectibles" onclick="filterProducts('collectibles')">Collectibles</button>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-header">
+            <h2 class="section-title">Shop Merchandise</h2>
+            <p class="section-subtitle">Take home a piece of the Arrangements experience</p>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+            <!-- T-Shirt 1 -->
+            <div class="product-card" data-category="apparel">
+                <div class="product-image">
+                    👕
+                    <span class="product-badge">Popular</span>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Apparel</div>
+                    <h3 class="product-title">Arrangements Tour Tee</h3>
+                    <p class="product-description">Premium unisex fit featuring the Arrangements logo and show artwork. Bella+Canvas 3001 quality.</p>
+                    <div class="product-price">$20</div>
+                    <div class="product-options">
+                        <div class="size-selector">
+                            <label>Size</label>
+                            <div class="size-buttons">
+                                <button class="size-btn" data-size="XS">XS</button>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                                <button class="size-btn" data-size="2XL">2XL</button>
+                                <button class="size-btn" data-size="3XL">3XL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('arrangements-tee', 'Arrangements Tour Tee', 20, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- T-Shirt 2 -->
+            <div class="product-card" data-category="apparel">
+                <div class="product-image">
+                    👕
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Apparel</div>
+                    <h3 class="product-title">Faith or Freedom Tee</h3>
+                    <p class="product-description">Bold statement tee with the iconic "Faith or Freedom" tagline. Premium print quality.</p>
+                    <div class="product-price">$20</div>
+                    <div class="product-options">
+                        <div class="size-selector">
+                            <label>Size</label>
+                            <div class="size-buttons">
+                                <button class="size-btn" data-size="XS">XS</button>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                                <button class="size-btn" data-size="2XL">2XL</button>
+                                <button class="size-btn" data-size="3XL">3XL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('faith-freedom-tee', 'Faith or Freedom Tee', 20, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Motorcycle Glasses -->
+            <div class="product-card" data-category="accessories">
+                <div class="product-image">
+                    🕶️
+                    <span class="product-badge limited">Limited</span>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-title">Faith or Freedom Biker Shades</h3>
+                    <p class="product-description">Classic motorcycle glasses with custom "Faith or Freedom" branding. Channel your inner George Michael.</p>
+                    <div class="product-price">$13</div>
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Quantity</label>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10">
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('biker-shades', 'Faith or Freedom Biker Shades', 13, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Signed Poster -->
+            <div class="product-card" data-category="collectibles">
+                <div class="product-image">
+                    🖼️
+                    <span class="product-badge limited">Signed</span>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Collectibles</div>
+                    <h3 class="product-title">Signed Show Poster (11x17")</h3>
+                    <p class="product-description">Premium 100lb matte poster featuring full-color show artwork. Signed in-venue by the cast.</p>
+                    <div class="product-price">$10</div>
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Quantity</label>
+                            <input type="number" class="quantity-input" value="1" min="1" max="5">
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('signed-poster', 'Signed Show Poster', 10, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Sticker Pack -->
+            <div class="product-card" data-category="collectibles">
+                <div class="product-image">
+                    ✨
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Collectibles</div>
+                    <h3 class="product-title">Arrangements Sticker Pack</h3>
+                    <p class="product-description">Die-cut vinyl stickers featuring show logos, "Faith or Freedom," and exclusive artwork. UV-resistant.</p>
+                    <div class="product-price">$3</div>
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Quantity</label>
+                            <input type="number" class="quantity-input" value="1" min="1" max="20">
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('sticker-pack', 'Arrangements Sticker Pack', 3, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- George Michael Tribute Sticker -->
+            <div class="product-card" data-category="collectibles">
+                <div class="product-image">
+                    🎵
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Collectibles</div>
+                    <h3 class="product-title">George Michael Tribute Sticker</h3>
+                    <p class="product-description">Single die-cut vinyl sticker with iconic George Michael silhouette. Perfect for laptops & water bottles.</p>
+                    <div class="product-price">$3</div>
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Quantity</label>
+                            <input type="number" class="quantity-input" value="1" min="1" max="20">
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('gm-sticker', 'George Michael Tribute Sticker', 3, this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Venue Exclusive Poster -->
+            <div class="product-card" data-category="collectibles">
+                <div class="product-image">
+                    🎭
+                    <span class="product-badge limited">Venue Only</span>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Collectibles</div>
+                    <h3 class="product-title">Venue Exclusive Poster</h3>
+                    <p class="product-description">Limited edition poster with venue-specific artwork. Only available at live performances.</p>
+                    <div class="product-price">$10</div>
+                    <div class="product-options">
+                        <p style="color: #999; font-size: 0.85rem; margin-bottom: 1rem;">Available at venue only</p>
+                    </div>
+                    <button class="add-to-cart-btn" disabled>Venue Only</button>
+                </div>
+            </div>
+
+            <!-- Tour Dates Sticker -->
+            <div class="product-card" data-category="collectibles">
+                <div class="product-image">
+                    📍
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Collectibles</div>
+                    <h3 class="product-title">Tour Dates Sticker</h3>
+                    <p class="product-description">Commemorative sticker featuring all show dates and venues. Collect memories from every performance.</p>
+                    <div class="product-price">$3</div>
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Quantity</label>
+                            <input type="number" class="quantity-input" value="1" min="1" max="20">
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('tour-sticker', 'Tour Dates Sticker', 3, this)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Info -->
+    <section class="venue-info" id="venue">
+        <div class="venue-content">
+            <h2>Merch Available at Every Show</h2>
+            <p>
+                Our merch booth is set up at every Arrangements performance.
+                Stop by before the show or during intermission to browse our full collection.
+                Signed posters are signed live at the venue after each performance.
+            </p>
+            <div class="venue-features">
+                <div class="venue-feature">
+                    <div class="venue-feature-icon">✍️</div>
+                    <h3>In-Person Signing</h3>
+                    <p>Get your poster signed by the cast after every show</p>
+                </div>
+                <div class="venue-feature">
+                    <div class="venue-feature-icon">💳</div>
+                    <h3>Easy Payment</h3>
+                    <p>We accept cards and mobile payments at the booth</p>
+                </div>
+                <div class="venue-feature">
+                    <div class="venue-feature-icon">🎁</div>
+                    <h3>Exclusive Items</h3>
+                    <p>Venue-only exclusives you won't find online</p>
+                </div>
+                <div class="venue-feature">
+                    <div class="venue-feature-icon">📦</div>
+                    <h3>Premium Quality</h3>
+                    <p>All items made with premium materials</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <div class="cart-empty-icon">🛒</div>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-price" id="cart-total">$0</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn" disabled onclick="checkout()">Proceed to Checkout</button>
+            <div class="cart-note">
+                Online ordering coming soon. Visit our merch booth at shows!
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Item added to cart!</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Jason Plus Productions. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="index.html">Back to Main Site</a> |
+            <a href="mailto:jasonplusproductions@gmail.com">Contact Us</a>
+        </p>
+    </footer>
+
+    <script>
+        // Cart state
+        let cart = [];
+
+        // Initialize size button listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const sizeButtons = document.querySelectorAll('.size-btn');
+            sizeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parent = this.closest('.size-buttons');
+                    parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+        });
+
+        // Filter products by category
+        function filterProducts(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Add item to cart
+        function addToCart(id, name, price, buttonElement) {
+            const card = buttonElement.closest('.product-card');
+
+            // Get size if applicable
+            const selectedSize = card.querySelector('.size-btn.selected');
+            const size = selectedSize ? selectedSize.dataset.size : null;
+
+            // Get quantity
+            const quantityInput = card.querySelector('.quantity-input');
+            const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+
+            // Validate size selection for apparel
+            if (card.dataset.category === 'apparel' && !size) {
+                showToast('Please select a size');
+                return;
+            }
+
+            // Create cart item
+            const cartItem = {
+                id: size ? `${id}-${size}` : id,
+                name: name,
+                price: price,
+                size: size,
+                quantity: quantity
+            };
+
+            // Check if item exists in cart
+            const existingIndex = cart.findIndex(item => item.id === cartItem.id);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push(cartItem);
+            }
+
+            updateCartUI();
+            showToast('Added to cart!');
+        }
+
+        // Remove item from cart
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            // Update count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // Update items list
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon">🛒</div>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+                checkoutBtn.disabled = true;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${getItemEmoji(item.name)}</div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-variant">${item.size ? `Size: ${item.size} • ` : ''}Qty: ${item.quantity}</div>
+                            <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">&times;</button>
+                    </div>
+                `).join('');
+                checkoutBtn.disabled = false;
+            }
+
+            // Update total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Get emoji for item
+        function getItemEmoji(name) {
+            if (name.includes('Tee')) return '👕';
+            if (name.includes('Shades') || name.includes('Glasses')) return '🕶️';
+            if (name.includes('Poster')) return '🖼️';
+            if (name.includes('Sticker')) return '✨';
+            return '🛍️';
+        }
+
+        // Toggle cart sidebar
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Checkout placeholder
+        function checkout() {
+            showToast('Online checkout coming soon! Visit us at shows.');
+        }
+    </script>
+</body>
+</html>
