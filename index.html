@@ -737,220 +737,313 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="#home" class="nav-logo">Jason Plus Productions</a>
-        <div class="nav-container">
-            <ul class="subdomain-links">
-                <li><a href="https://vocalstudio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Vocal Studio</a></li>
-                <li><span class="nav-coming-soon">The MLC</span></li>
-                <li><a href="merch.html">Merch</a></li>
-                <li><span class="nav-coming-soon">Interactive Theatre</span></li>
-            </ul>
+    <header>
+        <nav>
+            <a href="#home" class="logo">Jason Plus Productions</a>
             <ul class="nav-links">
-                <li><a onclick="scrollToSection('services')">Services</a></li>
-                <li><a onclick="scrollToSection('about')">About</a></li>
-                <li><a onclick="scrollToSection('productions')">Past Work</a></li>
-                <li><a onclick="scrollToSection('upcoming')">Upcoming</a></li>
-                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+                <li><a href="#vocal-studio">Vocal Studio</a></li>
+                <li><a href="https://themlc.jasonplusproductions.com" class="nav-link-mlc" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank'); return false;">The MLC</a></li>
+                <li><a href="#merch-cards">Merch</a></li>
+                <li><a href="#interactive-theatre">Interactive Theatre</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#past-work">Past Work</a></li>
+                <li><a href="#upcoming">Upcoming</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Jason Plus Productions</h1>
-            <div class="hero-tagline">Interactive Theater | Artistic Innovation | Community Impact</div>
-            <p class="hero-subtitle">
-                Your creative hub for vocal performance, live music experiences, and groundbreaking interactive theater.
-            </p>
-            <button class="cta-button" onclick="scrollToSection('services')">Explore Our Services</button>
-        </div>
-    </section>
-
-    <!-- Services Hub -->
-    <section class="services-hub" id="services">
-        <div class="section-title">Jason Plus Ecosystem</div>
-        <p class="section-subtitle">
-            Four interconnected creative ventures—all united under one artistic vision.
-        </p>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="images/flamingo-logo.png" alt="Vocal Studio Logo" class="service-icon-img">
-                <h3>Jason Hackner Vocal Studio</h3>
-                <p>Professional voice coaching and personalized vocal instruction in Charlotte. Book lessons, track progress, and unlock your vocal potential.</p>
-                <a href="https://vocalstudio.jasonplusproductions.com" class="service-cta" target="_blank" rel="noopener noreferrer">Visit Vocal Studio →</a>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Jason Plus Productions</h1>
+                <p class="hero-tagline">Interactive Theater | Artistic Innovation | Community Impact</p>
+                <p class="hero-desc">Your creative hub for vocal performance, live music experiences, and groundbreaking, interactive theater.</p>
+                <a href="#services" class="btn btn-hero">Explore Our Services</a>
             </div>
+        </section>
 
-            <div class="service-card">
-                <div class="service-icon">🎭</div>
-                <h3>Interactive Theatre</h3>
-                <p>Groundbreaking theater experiences where audiences shape the story. Faith & Freedom and Arrangements <a href="https://themlc.jasonplusproductions.com">Visit The MLC ?</a>.</p>
-                <span class="service-cta coming-soon"><a href="https://themlc.jasonplusproductions.com">Visit The MLC ?</a></span>
+        <section id="links" class="section section-links">
+            <div class="container">
+                <div class="links-block">
+                    <h1 class="links-title">Jason Plus Productions — Project & Studio Links</h1>
+
+                    <h2>ARRANGEMENTS — Official Project Site</h2>
+                    <p><a href="https://themlc.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://themlc.jasonplusproductions.com</a></p>
+
+                    <h2>Jason Plus Productions — Main Site</h2>
+                    <p><a href="https://jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://jasonplusproductions.com</a></p>
+
+                    <h2>Jason Hackner Vocal Studio</h2>
+                    <p><a href="https://vocal-studio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://vocal-studio.jasonplusproductions.com</a></p>
+                </div>
             </div>
+        </section>
 
-            <div class="service-card">
-                <div class="service-icon">🛍️</div>
-                <h3>Merchandise</h3>
-                <p>Official Arrangements show merchandise. Premium T-shirts, signed posters, stickers, and exclusive accessories from our interactive theater productions.</p>
-                <a href="merch.html" class="service-cta">Shop Merch →</a>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🎸</div>
-                <h3>Jason Plus The MLC</h3>
-                <p>Classic 70s-90s R&B and George Michael tribute band. Energetic live performances at venues throughout Charlotte and beyond.</p>
-                <span class="service-cta coming-soon"><a href="https://themlc.jasonplusproductions.com">Visit The MLC ?</a></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section-title">About Jason Plus Productions</div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Theater, Music & Vocal Excellence Through Active Participation</h3>
-                <p>
-                    Jason Plus Productions believes in interaction, engagement, and active participation. We don't believe in passive consumption. Whether you're stepping into a vocal lesson, jamming with a live band, or shaping the narrative of an interactive musical—you're not a spectator, you're a participant.
-                </p>
-                <p>
-                    Founded by Jason Hackner, a vocalist and theater director, Jason Plus Productions creates spaces where students become confident performers, where audiences become co-creators, and where live music becomes a conversation between artist and participant. Every experience is designed for active involvement and transformation.
-                </p>
-                <p>
-                    <strong>Our Mission:</strong> Empowering people through vocal mastery, authentic live performance, and interactive theater that demands participation, rewards engagement, and celebrates the power of doing—not just watching.
-                </p>
-                <div class="about-stats">
-                    <div class="stat-box">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Performance Years</div>
+        <section id="services" class="section section-services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div id="vocal-studio" class="service-card">
+                        <span class="card-icon" aria-hidden="true">🦩</span>
+                        <h3>Jason Hackner Vocal Studio</h3>
+                        <p>Professional vocal coaching.</p>
+                        <a href="https://vocal-studio.jasonplusproductions.com" class="card-link" target="_blank" rel="noopener noreferrer">Visit Vocal Studio →</a>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Interactive Musicals</div>
+                    <div id="interactive-theatre" class="service-card">
+                        <span class="card-icon" aria-hidden="true">🎭</span>
+                        <h3>Interactive Theatre</h3>
+                        <p>Groundbreaking theater experiences.</p>
+                        <span class="btn-coming-soon">Coming Soon</span>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Live Performances</div>
+                    <div id="merch" class="service-card">
+                        <span class="card-icon" aria-hidden="true">🛍</span>
+                        <h3>Merchandise</h3>
+                        <p>Official show merchandise.</p>
+                        <a href="#merch-cards" class="card-link">Shop Merch →</a>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-number">Charlotte</div>
-                        <div class="stat-label">Base of Operations</div>
+                    <a href="https://themlc.jasonplusproductions.com" class="service-card service-card-link" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank'); return false;">
+                        <span class="card-icon" aria-hidden="true">🎸</span>
+                        <h3>Jason Plus The MLC</h3>
+                        <p>Classic 80s 90s R&B and George Michael Tribute band.</p>
+                        <span class="btn-coming-soon">Coming Soon</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="mlc" class="section section-mlc">
+            <div class="container">
+                <h2>Jason Plus The MLC</h2>
+                <p class="section-intro">Classic 80s & 90s R&B and George Michael tribute — music, learning, and community.</p>
+                <div class="mlc-tile-cards">
+                    <a href="https://themlc.jasonplusproductions.com" class="mlc-tile" target="_blank" rel="noopener noreferrer" style="cursor:pointer;">
+                        <span class="mlc-tile-icon" aria-hidden="true">🎸</span>
+                        <h3>Visit The MLC</h3>
+                        <p>Music, learning & community</p>
+                    </a>
+                    <a href="#performance-clips" class="mlc-tile" style="cursor:pointer;">
+                        <span class="mlc-tile-icon" aria-hidden="true">🎬</span>
+                        <h3>Performance Clips</h3>
+                        <p>Watch on YouTube</p>
+                    </a>
+                    <a href="https://youtu.be/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" class="mlc-tile" target="_blank" rel="noopener noreferrer" style="cursor:pointer;">
+                        <span class="mlc-tile-icon" aria-hidden="true">▶</span>
+                        <h3>YouTube Playlist</h3>
+                        <p>Full playlist</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="merch-cards" class="section section-merch">
+            <div class="container">
+                <h2>MLC MERCH</h2>
+                <p class="section-intro merch-subtitle">WEAR THE SOUND</p>
+                <div class="merch-grid">
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-hoodie.png" alt="Premium Hoodie" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Hoodie</div>
+                        </div>
+                        <h3>PREMIUM HOODIE</h3>
+                        <p class="merch-desc">Premium (Black or Cream). Soft feel, stage-ready warmth.</p>
+                        <p class="merch-price">$53.99</p>
+                        <span class="merch-label">UNISEX</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-mug.png" alt="Coffee Mug" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Mug</div>
+                        </div>
+                        <h3>COFFEE MUG (15OZ)</h3>
+                        <p class="merch-desc">15oz ceramic mug—perfect for rehearsal nights and early gigs.</p>
+                        <p class="merch-price">$16.99</p>
+                        <span class="merch-label">CERAMIC</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-tote.png" alt="Jazz Tote Bag" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Tote</div>
+                        </div>
+                        <h3>JAZZ TOTE BAG</h3>
+                        <p class="merch-desc">All-over print tote—everyday carry with vintage energy.</p>
+                        <p class="merch-price">$28.99</p>
+                        <span class="merch-label">ALL-OVER PRINT</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-sticker.png" alt="Vinyl Record Sticker" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Sticker</div>
+                        </div>
+                        <h3>VINYL RECORD STICKER (3x3)</h3>
+                        <p class="merch-desc">Perfect add-on at shows—clean, durable vinyl.</p>
+                        <p class="merch-price">$8.99</p>
+                        <span class="merch-label">3x3</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section section-about">
+            <div class="container">
+                <h2>About Jason Plus Productions.</h2>
+                <div class="about-layout">
+                    <div class="about-image-wrap">
+                        <img class="about-image" src="assets/jason-plus-mlc-2021.png" alt="Jason Plus the MLC" width="400" height="533">
+                    </div>
+                    <div class="about-text">
+                        <h3>Theater, Music & Vocal Excellence Through Active Participation</h3>
+                        <p>Jason Plus Productions is dedicated to creating exceptional vocal, theatrical, and live music experiences. We bring together performance, community, and innovation to deliver interactive theater and memorable events.</p>
+                        <p>Our mission is to empower artists and audiences through participation, from vocal coaching and tribute performances to full-scale interactive musicals.</p>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box stat-pink"><span class="stat-num">15+</span><span class="stat-label">Performance Team</span></div>
+                    <div class="stat-box stat-teal"><span class="stat-num">2</span><span class="stat-label">Interactive Musicals</span></div>
+                    <div class="stat-box stat-purple"><span class="stat-num">100+</span><span class="stat-label">Live Performances</span></div>
+                    <div class="stat-box stat-blue"><span class="stat-num">Charlotte</span><span class="stat-label">Base of Operations</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="past-work" class="section section-past">
+            <div class="container">
+                <h2>Past Productions & Performance.</h2>
+                <p class="section-intro">Highlights from our performances and theatrical productions.</p>
+                <div class="past-grid">
+                    <a href="#performance-clips" class="past-card past-card-mlc">
+                        <span class="card-icon">🎬</span>
+                        <h3>Jason Plus The MLC</h3>
+                        <p>Performance Clips</p>
+                        <span class="past-desc">Professional performance footage from Jason Plus The MLC tribute band.</span>
+                    </a>
+                    <div class="past-card past-card-photo">
+                        <span class="card-icon">📷</span>
+                        <h3>Band Photography & Flyers</h3>
+                        <p>Live Performance</p>
+                        <span class="past-desc">Concert and event photography.</span>
+                    </div>
+                    <div class="past-card past-card-theater">
+                        <span class="card-icon">🎤</span>
+                        <h3>GrandNight for Singing</h3>
+                        <p>Theater Production</p>
+                        <span class="past-desc">Theatrical production highlights.</span>
                     </div>
                 </div>
             </div>
-            <div class="about-image">
-                <img src="images/jason-hackner.jpg" alt="Jason Hackner - Founder of Jason Plus Productions">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Past Productions -->
-    <section class="productions" id="productions">
-        <div class="section-title">Past Productions & Performance</div>
-        <p class="section-subtitle">
-            A portfolio of live performance experience and production work showcasing artistic range and technical capability.
-        </p>
-        <div class="productions-grid">
-            <div class="production-card">
-                <div class="production-image">🎬</div>
-                <div class="production-content">
-                    <div class="production-category">Performance Clips</div>
-                    <div class="production-title">Jason Plus The MLC</div>
-                    <p class="production-description">
-                        Professional performance footage from Jason Plus The MLC tribute band, showcasing vocal performance, stage presence, and audience engagement across multiple venues in the Charlotte area.
-                    </p>
+        <section id="performance-clips" class="section section-clips">
+            <div class="container">
+                <h2>Jason Plus The MLC — Performance Clips</h2>
+                <p>Watch our performance clips on YouTube.</p>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" title="Jason Plus Performance Clips" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-            </div>
-
-            <div class="production-card">
-                <div class="production-image">📸</div>
-                <div class="production-content">
-                    <div class="production-category">Live Performance</div>
-                    <div class="production-title">Band Photography & Flyers</div>
-                    <p class="production-description">
-                        Professional photography from past performances, promotional materials, and audience engagement shots demonstrating production quality and promotional excellence.
-                    </p>
-                </div>
-            </div>
-
-            <div class="production-card">
-                <div class="production-image">🎤</div>
-                <div class="production-content">
-                    <div class="production-category">Theater Production</div>
-                    <div class="production-title">GrandNight for Singing</div>
-                    <p class="production-description">
-                        Production photography from theatrical vocal performance work, demonstrating technical stage experience, lighting coordination, and professional production standards.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upcoming Musicals -->
-    <section class="upcoming" id="upcoming">
-        <div class="section-title">Upcoming Interactive Musicals</div>
-        <p class="section-subtitle">
-            Two transformative theatrical experiences currently in development, combining audience participation with original storytelling.
-        </p>
-        <div class="upcoming-grid">
-            <div class="musical-hero">
-                <h3>Faith and Freedom</h3>
-                <p>
-                    An interactive musical exploration of personal transformation and societal change. Audiences become active participants in the narrative, making choices that shape the story's trajectory and emotional arc.
+                <p class="video-link-wrap">
+                    <a href="https://youtu.be/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
                 </p>
-                <p>
-                    <strong>Themes:</strong> Identity, Growth, Community, Empowerment
-                </p>
-                <div class="badge">In Development</div>
             </div>
+        </section>
 
-            <div class="musical-hero arrangements-card">
-                <img src="images/arrangements-poster.jpg" alt="Arrangements - A George Michael & Wham! Tribute Dramedy">
-                <div class="arrangements-overlay">
-                    <h3>Arrangements</h3>
-                    <p>A George Michael & Wham! tribute dramedy featuring live band, complicated cocktails, and interactive theatre.</p>
-                    <div class="badge">In Development</div>
+        <section id="upcoming" class="section section-upcoming">
+            <div class="container">
+                <h2>Upcoming Interactive Musicals.</h2>
+                <p class="section-intro">New projects in development.</p>
+                <div class="upcoming-grid">
+                    <div class="upcoming-card upcoming-faith">
+                        <h3>Faith and Freedom</h3>
+                        <p>Themes: Identity, Growth, Community, Empowerment.</p>
+                        <span class="btn-in-dev">In Development</span>
+                    </div>
+                    <div class="upcoming-card upcoming-arrangements">
+                        <div class="arrangements-brand">JASONPLUS PRODUCTIONS</div>
+                        <h3>ARRANGEMENTS</h3>
+                        <p class="arrangements-sub">A Modern Rhapsody</p>
+                        <p class="arrangements-feat">featuring the music of George Michael</p>
+                        <p>An immersive musical experience.</p>
+                        <span class="btn-in-dev">In Development</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-title">Get In Touch</div>
-        <div class="contact-box">
-            <h3>Interested in Our Work?</h3>
-            <p>
-                Whether you're exploring partnerships, interested in booking performances, or want to learn more about our grant-funded initiatives—we'd love to hear from you.
-            </p>
-            <div class="contact-links">
-                <a href="mailto:jasonplusproductions@gmail.com" class="contact-link">
-                    jasonplusproductions@gmail.com
-                </a>
-                <a href="tel:+17042738399" class="contact-link">
-                    (704) 273-8399
-                </a>
-                <a href="https://www.instagram.com/jasonplusproductions" class="contact-link" target="_blank" rel="noopener noreferrer">
-                    @JasonPlusProductions (Instagram)
-                </a>
+        <section id="gallery" class="section section-gallery">
+            <div class="container">
+                <h2>Gallery.</h2>
+                <p class="section-intro">Performance and production photos.</p>
+                <div class="gallery-grid">
+                    <img src="assets/jason-plus-mlc-2021.png" alt="Jason Plus the MLC" class="gallery-img" loading="lazy">
+                    <img src="assets/piano-performance.png" alt="Piano performance" class="gallery-img" loading="lazy">
+                    <img src="assets/group-selfie.png" alt="Group" class="gallery-img" loading="lazy">
+                    <img src="assets/band-camp-north-end.png" alt="Band at Camp North End" class="gallery-img" loading="lazy">
+                    <img src="assets/stage-duo.png" alt="Stage performance" class="gallery-img" loading="lazy">
+                    <img src="assets/choir-performance.png" alt="Choir performance" class="gallery-img" loading="lazy">
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
+        <section id="contact" class="section section-contact">
+            <div class="container">
+                <h2>Get In Touch.</h2>
+                <div class="contact-card">
+                    <h3>Interested In Our Work?</h3>
+                    <p>We'd love to hear from you. Reach out for bookings, collaborations, or general inquiries.</p>
+                    <ul class="contact-list">
+                        <li><a href="mailto:jasonplusproductions@gmail.com">jasonplusproductions@gmail.com</a></li>
+                        <li><a href="tel:+17042732389">(704) 273-2389</a></li>
+                        <li><a href="https://instagram.com/JasonPlusProductions" target="_blank" rel="noopener noreferrer">@JasonPlusProductions</a> (Instagram)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        <p>&copy; 2026 Jason Plus Productions. All rights reserved. | Charlotte, North Carolina</p>
+        <div class="container">
+            <p>&copy; 2024 Jason Plus Productions. All rights reserved | Charlotte, North Carolina</p>
+        </div>
     </footer>
 
     <script>
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+    (function () {
+        function goToMlc(e) {
+            var a = e.currentTarget;
+            if (!a || !a.href || a.href.indexOf('themlc') === -1) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (a.target === '_blank') {
+                window.open(a.href, '_blank', 'noopener,noreferrer');
+            } else {
+                window.location.href = a.href;
             }
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            var mlcLinks = document.querySelectorAll('a[href*="themlc.jasonplusproductions.com"]');
+            mlcLinks.forEach(function (a) {
+                a.addEventListener('click', goToMlc, true);
+            });
+        });
+    })();
     </script>
 </body>
 </html>
