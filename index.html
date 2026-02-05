@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' *.list-manage.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' *.list-manage.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -660,6 +660,166 @@
             background: transparent;
         }
 
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(139, 45, 143, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(0, 201, 167, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-box {
+            background-color: #2a2a2a;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(139, 45, 143, 0.2);
+            border: 1px solid rgba(139, 45, 143, 0.3);
+        }
+
+        .newsletter-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .newsletter-box p {
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            border: 2px solid #444;
+            border-radius: 4px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 45, 143, 0.2);
+        }
+
+        .newsletter-input::placeholder {
+            color: #888;
+        }
+
+        .newsletter-submit {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-submit:hover {
+            background: linear-gradient(135deg, #E91E8C 0%, #8B2D8F 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 45, 143, 0.4);
+        }
+
+        .newsletter-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .newsletter-privacy {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 1rem;
+        }
+
+        .newsletter-privacy a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .newsletter-privacy a:hover {
+            text-decoration: underline;
+        }
+
+        .newsletter-message {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .newsletter-message.success {
+            display: block;
+            background-color: rgba(0, 201, 167, 0.2);
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+
+        .newsletter-message.error {
+            display: block;
+            background-color: rgba(233, 30, 140, 0.2);
+            color: var(--accent-pink);
+            border: 1px solid var(--accent-pink);
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-input-group {
+                flex-direction: column;
+            }
+
+            .newsletter-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .newsletter-box h3 {
+                font-size: 1.5rem;
+            }
+        }
+
         /* Footer */
         footer {
             background-color: #000;
@@ -752,6 +912,7 @@
                 <li><a onclick="scrollToSection('about')">About</a></li>
                 <li><a onclick="scrollToSection('productions')">Past Work</a></li>
                 <li><a onclick="scrollToSection('upcoming')">Upcoming</a></li>
+                <li><a onclick="scrollToSection('newsletter')">Newsletter</a></li>
                 <li><a onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
         </div>
@@ -875,16 +1036,6 @@
                 </div>
             </div>
 
-            <div class="production-card">
-                <div class="production-image">🎤</div>
-                <div class="production-content">
-                    <div class="production-category">Theater Production</div>
-                    <div class="production-title">GrandNight for Singing</div>
-                    <p class="production-description">
-                        Production photography from theatrical vocal performance work, demonstrating technical stage experience, lighting coordination, and professional production standards.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -913,6 +1064,27 @@
                     <p>A George Michael & Wham! tribute dramedy featuring live band, complicated cocktails, and interactive theatre.</p>
                     <div class="badge">In Development</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="newsletter-content">
+            <div class="section-title">Stay in the Loop</div>
+            <p class="section-subtitle">Get updates on upcoming shows, exclusive content, and behind-the-scenes news.</p>
+            <div class="newsletter-box">
+                <h3>Join Our Mailing List</h3>
+                <p>Be the first to know about new productions, vocal studio openings, band performances, and exclusive ticket pre-sales.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <div class="newsletter-input-group">
+                        <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Enter your email address" required>
+                        <button type="submit" class="newsletter-submit" id="newsletter-btn">Subscribe</button>
+                    </div>
+                    <input type="text" id="newsletter-name" class="newsletter-input" placeholder="Your name (optional)">
+                    <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime. <a href="#">Privacy Policy</a></p>
+                    <div id="newsletter-message" class="newsletter-message"></div>
+                </form>
             </div>
         </div>
     </section>
@@ -950,6 +1122,93 @@
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+
+        // Newsletter form handling for Mailchimp
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('newsletter-email').value;
+            const name = document.getElementById('newsletter-name').value;
+            const btn = document.getElementById('newsletter-btn');
+            const messageEl = document.getElementById('newsletter-message');
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Disable button and show loading state
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            // Mailchimp configuration
+            const MAILCHIMP_URL = 'https://jasonplusproductions.us21.list-manage.com/subscribe/post-json?u=e949178d43c9daeac76a0e356&id=5bc8b48dc0&f_id=004638e6f0';
+
+            // For Mailchimp, we use their embedded form approach
+            // You'll need to replace the URL with your actual Mailchimp form URL
+            // Format: https://YOUR-DC.list-manage.com/subscribe/post-json?u=YOUR_U&id=YOUR_ID
+
+            if (MAILCHIMP_URL === 'YOUR_MAILCHIMP_FORM_ACTION_URL') {
+                // Demo mode - show success message
+                setTimeout(function() {
+                    showMessage('Thanks for subscribing! (Demo mode - configure Mailchimp URL to enable)', 'success');
+                    btn.disabled = false;
+                    btn.textContent = 'Subscribe';
+                    document.getElementById('newsletter-email').value = '';
+                    document.getElementById('newsletter-name').value = '';
+                }, 1000);
+                return;
+            }
+
+            // Build the Mailchimp URL with parameters
+            const url = MAILCHIMP_URL + '&EMAIL=' + encodeURIComponent(email);
+            const fullUrl = name ? url + '&FNAME=' + encodeURIComponent(name) : url;
+
+            // Use JSONP for cross-origin Mailchimp requests
+            const script = document.createElement('script');
+            script.src = fullUrl + '&c=mailchimpCallback';
+            document.body.appendChild(script);
+
+            // Set a timeout in case the request fails
+            setTimeout(function() {
+                if (btn.textContent === 'Subscribing...') {
+                    showMessage('Request timed out. Please try again.', 'error');
+                    btn.disabled = false;
+                    btn.textContent = 'Subscribe';
+                }
+            }, 10000);
+        });
+
+        // Mailchimp JSONP callback
+        function mailchimpCallback(response) {
+            const btn = document.getElementById('newsletter-btn');
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
+
+            if (response.result === 'success') {
+                showMessage('Thanks for subscribing! Check your email to confirm.', 'success');
+                document.getElementById('newsletter-email').value = '';
+                document.getElementById('newsletter-name').value = '';
+            } else {
+                // Handle different error messages from Mailchimp
+                let errorMsg = response.msg || 'Something went wrong. Please try again.';
+                // Clean up Mailchimp's HTML in error messages
+                errorMsg = errorMsg.replace(/<a[^>]*>.*?<\/a>/gi, '');
+                if (errorMsg.includes('already subscribed')) {
+                    showMessage('This email is already subscribed to our list!', 'error');
+                } else {
+                    showMessage(errorMsg, 'error');
+                }
+            }
+        }
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('newsletter-message');
+            messageEl.textContent = text;
+            messageEl.className = 'newsletter-message ' + type;
         }
     </script>
 </body>
