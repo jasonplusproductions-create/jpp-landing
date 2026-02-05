@@ -9,10 +9,10 @@
 
 ## Option A: Use this repo as the live site (recommended)
 
-1. Push this repo: `npm run deploy` (or `git push origin main`).
-2. In GitHub: **jasonplusproductions-create/jpp-landing** → **Settings** → **Pages**:
+1. In GitHub: **jasonplusproductions-create/jpp-landing** → **Settings** → **Pages**:
    - **Source:** GitHub Actions.
    - **Custom domain:** set to `jasonplusproductions.com` (and add the DNS records GitHub shows).
+2. Push this repo: `git push origin main` (or `npm run deploy`). **Deployment is automated** — every push to `main` runs the workflow and updates the site.
 3. After DNS propagates, jasonplusproductions.com will serve this code and the MLC nav + card will work.
 
 ## Option B: Keep the current live site’s codebase

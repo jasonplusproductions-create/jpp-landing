@@ -1,0 +1,12 @@
+{
+  "name": "jpp-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo Static site - no build step required",
+    "serve": "npx serve .",
+    "start": "npx serve .",
+    "deploy": "git add -A && (git diff --staged --quiet || git commit -m \"Update site\") && git push",
+    "release": "npm run build && npm run deploy"
+  }
+}
