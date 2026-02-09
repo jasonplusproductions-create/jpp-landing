@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"C:\\\\Users\\\\jaydh\\\\jpp landing\\\\index.html\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Arrangements merch store\n\n- Create merch.html with full product catalog\n- T-shirts, motorcycle glasses, signed posters, stickers\n- Shopping cart with size selection and quantity controls\n- Category filtering and responsive design\n- Update main site nav and services to link to merch page\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(powershell:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd newsletter signup section with Mailchimp integration\n\n- Add newsletter section with email/name form fields\n- Integrate Mailchimp JSONP for cross-origin subscription\n- Add responsive CSS styling for newsletter box\n- Update CSP to allow list-manage.com scripts\n- Add Newsletter link to navigation menu\n- Remove GrandNight for Singing production card\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nEnable The MLC navigation button with subdomain link\n\n- Changed The MLC from coming-soon span to active link\n- Links to https://themlc.jasonplusproductions.com\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(curl:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nEnable Interactive Theatre navigation button\n\n- Changed Interactive Theatre from coming-soon to active link\n- Links to https://arrangements.jasonplusproductions.com\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(gh repo list:*)",
+      "Bash(git -C \"/c/Users/jaydh/jpp landing\" remote -v)",
+      "Bash(git -C \"/c/Users/jaydh/Downloads/mlc/mlc-website\" status)",
+      "Bash(git -C \"/c/Users/jaydh/arrangements-website\" status)",
+      "Bash(git -C \"/c/Users/jaydh/arrangements-website\" remote -v)",
+      "Bash(done)",
+      "Bash(tr:*)",
+      "Bash(gh repo view:*)",
+      "Bash(xargs:*)",
+      "Bash(while read dir)",
+      "Bash(do)",
+      "Bash(if [ -f \"$dir/.env.local.backup\" ])",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(fi)",
+      "Bash(dir:*)",
+      "Bash(npx netlify:*)",
+      "Bash(netlify:*)"
+    ]
+  }
+}

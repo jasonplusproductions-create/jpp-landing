@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Auditions | Arrangements - A George Michael & Wham! Tribute Dramedy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #050508;
+            color: #ffffff;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Swirling Fog Background */
+        .fog-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .fog-layer {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            pointer-events: none;
+        }
+
+        .fog-layer-1 {
+            background:
+                radial-gradient(ellipse 120% 60% at 30% 70%, rgba(139, 45, 143, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 100% 50% at 70% 40%, rgba(30, 30, 60, 0.08) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 40% at 50% 90%, rgba(212, 175, 55, 0.04) 0%, transparent 50%);
+            animation: fogSwirl1 15s ease-in-out infinite alternate;
+        }
+
+        .fog-layer-2 {
+            background:
+                radial-gradient(ellipse 90% 50% at 60% 30%, rgba(233, 30, 140, 0.05) 0%, transparent 55%),
+                radial-gradient(ellipse 110% 55% at 20% 60%, rgba(20, 20, 50, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 35% at 80% 80%, rgba(139, 45, 143, 0.04) 0%, transparent 50%);
+            animation: fogSwirl2 18s ease-in-out infinite alternate;
+        }
+
+        .fog-layer-3 {
+            background:
+                radial-gradient(ellipse 100% 45% at 40% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse 130% 65% at 75% 20%, rgba(30, 30, 55, 0.07) 0%, transparent 60%);
+            animation: fogSwirl3 22s ease-in-out infinite alternate;
+        }
+
+        @keyframes fogSwirl1 {
+            0% { opacity: 0.6; transform: translate(-30px, 10px) rotate(-1deg); }
+            33% { opacity: 0.8; transform: translate(15px, -20px) rotate(0.5deg); }
+            66% { opacity: 0.7; transform: translate(25px, 5px) rotate(-0.5deg); }
+            100% { opacity: 0.9; transform: translate(-10px, -15px) rotate(1deg); }
+        }
+
+        @keyframes fogSwirl2 {
+            0% { opacity: 0.5; transform: translate(20px, -10px) rotate(1deg); }
+            33% { opacity: 0.7; transform: translate(-25px, 15px) rotate(-0.5deg); }
+            66% { opacity: 0.6; transform: translate(-15px, -25px) rotate(0.5deg); }
+            100% { opacity: 0.8; transform: translate(30px, 20px) rotate(-1deg); }
+        }
+
+        @keyframes fogSwirl3 {
+            0% { opacity: 0.4; transform: translate(10px, 20px) rotate(0.5deg) scale(1); }
+            50% { opacity: 0.6; transform: translate(-20px, -10px) rotate(-1deg) scale(1.05); }
+            100% { opacity: 0.5; transform: translate(15px, -25px) rotate(0.5deg) scale(0.95); }
+        }
+
+        /* Content above fog */
+        nav, .hero, .announcement, .signup-section, .info-section, .contact-cta, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        :root {
+            --primary: #8B2D8F;
+            --secondary: #00C9A7;
+            --tertiary: #FFB703;
+            --accent-pink: #E91E8C;
+            --accent-blue: #00A9FF;
+            --gold: #D4AF37;
+            --dark-bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.2);
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(139, 45, 143, 0.3);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cccccc;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .subdomain-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .subdomain-links li a {
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .subdomain-links li:nth-child(1) a {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .subdomain-links li:nth-child(1) a:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .subdomain-links li:nth-child(2) a {
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+
+        .subdomain-links li:nth-child(2) a:hover {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+        .subdomain-links li:nth-child(3) a {
+            color: var(--tertiary);
+            border: 1px solid var(--tertiary);
+        }
+
+        .subdomain-links li:nth-child(3) a:hover {
+            background-color: var(--tertiary);
+            color: #000;
+        }
+
+        .subdomain-links li:nth-child(4) a {
+            color: var(--accent-pink);
+            border: 1px solid var(--accent-pink);
+        }
+
+        .subdomain-links li:nth-child(4) a:hover {
+            background-color: var(--accent-pink);
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 5rem 2rem 3rem;
+            text-align: center;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(139, 45, 143, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(233, 30, 140, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #f5e6a3 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #aaa;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .hero-show-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-pink), var(--primary));
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Announcement Section */
+        .announcement {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .announcement-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--accent-pink), var(--gold));
+        }
+
+        .announcement-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .announcement-header h2 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .announcement-header p {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .detail-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        .detail-value a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .detail-value a:hover {
+            color: var(--accent-pink);
+            text-decoration: underline;
+        }
+
+        /* Signup Section */
+        .signup-section {
+            padding: 3rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .signup-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .day-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .day-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .day-card:nth-child(1) { border-top: 3px solid var(--primary); }
+        .day-card:nth-child(2) { border-top: 3px solid var(--gold); }
+        .day-card:nth-child(3) { border-top: 3px solid var(--accent-pink); }
+
+        .day-card .day-name {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+            margin-bottom: 0.25rem;
+        }
+
+        .day-card .day-date {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .day-card .day-time {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .day-card .slot-info {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 1.25rem;
+        }
+
+        .signup-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #c9a227);
+            color: #000;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 2rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card ul li {
+            color: #ccc;
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .info-card ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .info-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-cta p {
+            color: #aaa;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .contact-cta a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-cta a:hover {
+            color: var(--accent-pink);
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #000;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(139, 45, 143, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-container {
+                align-items: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .subdomain-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .hero {
+                margin-top: 140px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-show-title {
+                font-size: 1.3rem;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .day-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card.full-width {
+                grid-column: 1;
+            }
+
+            .announcement-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Swirling Fog Background -->
+    <div class="fog-container">
+        <div class="fog-layer fog-layer-1"></div>
+        <div class="fog-layer fog-layer-2"></div>
+        <div class="fog-layer fog-layer-3"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-logo">Jason Plus Productions</a>
+        <div class="nav-container">
+            <ul class="subdomain-links">
+                <li><a href="https://vocalstudio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Vocal Studio</a></li>
+                <li><a href="https://themlc.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">The MLC</a></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><a href="https://arrangements.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">Interactive Theatre</a></li>
+            </ul>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#upcoming">Upcoming</a></li>
+                <li><a href="index.html#newsletter">Newsletter</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <span class="hero-badge">Now Casting</span>
+        <h1>Auditions</h1>
+        <p class="hero-subtitle">Jason Plus Productions presents</p>
+        <p class="hero-show-title">Arrangements: A George Michael & Wham! Tribute Dramedy</p>
+    </section>
+
+    <!-- Announcement Details -->
+    <section class="announcement" id="details">
+        <div class="announcement-card">
+            <div class="announcement-header">
+                <h2>Audition Announcement</h2>
+                <p>We're looking for talented performers to join our cast</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">Dates</div>
+                    <div class="detail-value">March 13 &ndash; 15, 2026</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Time</div>
+                    <div class="detail-value">1:00 PM &ndash; 4:00 PM each day</div>
+                </div>
+                <div class="detail-item full-width">
+                    <div class="detail-label">Location</div>
+                    <div class="detail-value">
+                        Dilworth United Methodist Church<br>
+                        <span style="color: #888;">605 E Boulevard, Charlotte, NC 28203</span>
+                    </div>
+                </div>
+                <div class="detail-item full-width">
+                    <div class="detail-label">Format</div>
+                    <div class="detail-value">15-minute individual audition slots &mdash; sign up for your preferred time below</div>
+                </div>
+                <div class="detail-item full-width">
+                    <div class="detail-label">Rating</div>
+                    <div class="detail-value">This show is rated PG</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up -->
+    <section class="signup-section" id="signup">
+        <h2 class="signup-title">Sign Up for Your Slot</h2>
+        <p class="signup-subtitle">Choose your preferred audition day and reserve a 15-minute time slot (1:00 PM &ndash; 4:00 PM)</p>
+
+        <div class="day-cards">
+            <div class="day-card">
+                <div class="day-name">Friday</div>
+                <div class="day-date">March 13</div>
+                <div class="day-time">1:00 &ndash; 4:00 PM</div>
+                <div class="slot-info">15-minute slots available</div>
+                <a href="https://forms.gle/PSLv1Y27bdjU9TUYA" target="_blank" rel="noopener noreferrer" class="signup-btn">Sign Up</a>
+            </div>
+            <div class="day-card">
+                <div class="day-name">Saturday</div>
+                <div class="day-date">March 14</div>
+                <div class="day-time">1:00 &ndash; 4:00 PM</div>
+                <div class="slot-info">15-minute slots available</div>
+                <a href="https://forms.gle/PSLv1Y27bdjU9TUYA" target="_blank" rel="noopener noreferrer" class="signup-btn">Sign Up</a>
+            </div>
+            <div class="day-card">
+                <div class="day-name">Sunday</div>
+                <div class="day-date">March 15</div>
+                <div class="day-time">1:00 &ndash; 4:00 PM</div>
+                <div class="slot-info">15-minute slots available</div>
+                <a href="https://forms.gle/PSLv1Y27bdjU9TUYA" target="_blank" rel="noopener noreferrer" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Info -->
+    <section class="info-section" id="info">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>What to Prepare</h3>
+                <ul>
+                    <li>A 2-minute cut of any George Michael or Wham! song, or a contemporary pop song that showcases both vocal ability and acting nuance/storytelling</li>
+                    <li>Choose material you connect with and have fun &mdash; we want to get a sense of your personality</li>
+                    <li>A cappella is acceptable, but performing with a backing track is preferred</li>
+                    <li>An accompanist will not be provided at initial auditions &mdash; bring your track or instrument as needed</li>
+                    <li>Bring a headshot and resume if you have them</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li>15-minute individual audition slot</li>
+                    <li>Please arrive 10 minutes early to check in</li>
+                    <li>Potential cast members should be prepared to come back on the third day (Sunday) for callbacks</li>
+                    <li>Callbacks will be announced Saturday evening &mdash; calls will be made first, then the list will be posted online</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>Callbacks</h3>
+                <ul>
+                    <li>If called back, you may be asked to read sides and/or sing specific song sections</li>
+                    <li>An accompanist will be provided on callback day</li>
+                </ul>
+            </div>
+            <div class="info-card full-width">
+                <h3>About the Show</h3>
+                <ul>
+                    <li>Interactive theatre experience featuring the music of George Michael & Wham!</li>
+                    <li>Dramedy format blending comedy, drama, and live musical performance</li>
+                    <li>Debuting July 2026 in Charlotte, NC</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <p>Questions about auditions? Reach out to us at</p>
+        <a href="mailto:jason@jasonplusproductions.com">jason@jasonplusproductions.com</a>
+        <br>
+        <a href="index.html" class="back-link">&larr; Back to Jason Plus Productions</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Jason Plus Productions. All rights reserved. | Charlotte, North Carolina</p>
+    </footer>
+</body>
+</html>
