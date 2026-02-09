@@ -84,7 +84,6 @@
 
         .nav-links a:hover {
             color: var(--secondary);
-            transition: color 0.3s ease;
         }
 
         /* Subdomain Links */
@@ -528,23 +527,23 @@
             text-align: center;
             box-shadow: 0 4px 16px rgba(139, 45, 143, 0.2);
             transition: all 0.3s ease;
-            border-top: 4px solid var(--primary);
             border: 1px solid rgba(139, 45, 143, 0.2);
+            border-top: 4px solid var(--primary);
         }
 
         .service-card:nth-child(2) {
-            border-top-color: var(--secondary);
             border-color: rgba(0, 201, 167, 0.2);
+            border-top: 4px solid var(--secondary);
         }
 
         .service-card:nth-child(3) {
-            border-top-color: var(--tertiary);
             border-color: rgba(255, 183, 3, 0.2);
+            border-top: 4px solid var(--tertiary);
         }
 
         .service-card:nth-child(4) {
-            border-top-color: var(--accent-pink);
             border-color: rgba(233, 30, 140, 0.2);
+            border-top: 4px solid var(--accent-pink);
         }
 
         .service-card:hover {
@@ -589,7 +588,6 @@
 
         .arrangements-card img {
             width: 100%;
-            height: 100%;
             object-fit: cover;
             min-height: 400px;
         }
@@ -619,6 +617,287 @@
             background: rgba(212, 175, 55, 0.3);
             border-color: #D4AF37;
             color: #D4AF37;
+        }
+
+        /* Interactive Theatre Showcase — Dark Foggy Night + Spotlights */
+        .theatre-showcase {
+            background: #050508;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fog layers */
+        .theatre-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 120% 60% at 50% 100%, rgba(30, 30, 50, 0.6) 0%, transparent 70%),
+                radial-gradient(ellipse 80% 40% at 20% 80%, rgba(20, 20, 40, 0.4) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 40% at 80% 60%, rgba(20, 20, 40, 0.3) 0%, transparent 60%);
+            z-index: 1;
+            pointer-events: none;
+            animation: fogDrift 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes fogDrift {
+            0% { opacity: 0.7; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(20px); }
+        }
+
+        /* Police spotlight beams */
+        .theatre-showcase::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                conic-gradient(from 200deg at 15% 0%, rgba(180, 200, 255, 0.08) 0deg, transparent 25deg),
+                conic-gradient(from 320deg at 85% 0%, rgba(180, 200, 255, 0.06) 0deg, transparent 20deg),
+                conic-gradient(from 250deg at 50% 0%, rgba(212, 175, 55, 0.04) 0deg, transparent 18deg);
+            z-index: 2;
+            pointer-events: none;
+            animation: spotlightSweep 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes spotlightSweep {
+            0% { transform: rotate(-2deg) scaleX(1); }
+            50% { transform: rotate(1deg) scaleX(1.05); }
+            100% { transform: rotate(3deg) scaleX(0.95); }
+        }
+
+        .theatre-showcase-inner {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .theatre-showcase .section-title {
+            text-align: center;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .theatre-showcase .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Marquee */
+        .theatre-marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 3;
+            padding: 0.75rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .theatre-marquee-track {
+            display: inline-block;
+            animation: marqueeScroll 20s linear infinite;
+        }
+
+        .theatre-marquee-track span {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(212, 175, 55, 0.4);
+        }
+
+        .marquee-bottom .theatre-marquee-track {
+            animation-direction: reverse;
+            animation-duration: 25s;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); }
+        }
+
+        .theatre-about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .theatre-about-text p {
+            color: #b0b0c0;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .theatre-about-text .highlight-text {
+            color: #D4AF37;
+            font-style: italic;
+            font-size: 1.05rem;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .theatre-about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(180, 200, 255, 0.05);
+        }
+
+        .theatre-about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .theatre-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .theatre-feature {
+            background: rgba(15, 15, 25, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .theatre-feature:hover {
+            transform: translateY(-4px);
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(180, 200, 255, 0.06);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .theatre-feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .theatre-feature h4 {
+            color: #D4AF37;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .theatre-feature p {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .theatre-tracklist-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .theatre-tracklist-header h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(180, 200, 255, 0.1);
+        }
+
+        .theatre-tracklist-header p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        .theatre-tracklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .theatre-track {
+            background: rgba(10, 10, 20, 0.7);
+            border: 1px solid rgba(180, 200, 255, 0.08);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .theatre-track:hover {
+            background: rgba(180, 200, 255, 0.05);
+            border-color: rgba(212, 175, 55, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .theatre-track-title {
+            color: #e0e0e8;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .theatre-track-note {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .theatre-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .theatre-detail {
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            color: #D4AF37;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .theatre-cta-row {
+            text-align: center;
+        }
+
+        .theatre-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            color: #000;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .theatre-cta:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 24px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(212, 175, 55, 0.3);
         }
 
         .service-card h3 {
@@ -807,20 +1086,6 @@
             border: 1px solid var(--accent-pink);
         }
 
-        @media (max-width: 768px) {
-            .newsletter-input-group {
-                flex-direction: column;
-            }
-
-            .newsletter-box {
-                padding: 2rem 1.5rem;
-            }
-
-            .newsletter-box h3 {
-                font-size: 1.5rem;
-            }
-        }
-
         /* Footer */
         footer {
             background-color: #000;
@@ -894,6 +1159,39 @@
             .arrangements-card img {
                 min-height: 300px;
             }
+
+            .theatre-about {
+                grid-template-columns: 1fr;
+            }
+
+            .theatre-about-image {
+                order: -1;
+            }
+
+            .theatre-features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .theatre-tracklist {
+                grid-template-columns: 1fr;
+            }
+
+            .theatre-details {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .newsletter-input-group {
+                flex-direction: column;
+            }
+
+            .newsletter-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .newsletter-box h3 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -913,6 +1211,7 @@
                 <li><a onclick="scrollToSection('about')">About</a></li>
                 <li><a onclick="scrollToSection('productions')">Past Work</a></li>
                 <li><a onclick="scrollToSection('upcoming')">Upcoming</a></li>
+                <li><a href="auditions.html" style="color: var(--gold); font-weight: 700;">Auditions</a></li>
                 <li><a onclick="scrollToSection('newsletter')">Newsletter</a></li>
                 <li><a onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
@@ -948,8 +1247,8 @@
             <div class="service-card">
                 <div class="service-icon">🎭</div>
                 <h3>Interactive Theatre</h3>
-                <p>Groundbreaking theater experiences where audiences shape the story. Faith & Freedom and Arrangements coming soon.</p>
-                <a href="https://arrangements.jasonplusproductions.com" class="service-cta" target="_blank" rel="noopener noreferrer">Visit Arrangements →</a>
+                <p>Immersive theatrical experiences where your vote determines the ending. Live band, craft cocktails, and intimate 150-person venues. Arrangements premieres July 2026.</p>
+                <a href="#theatre-showcase" class="service-cta" onclick="scrollToSection('theatre-showcase'); return false;">Explore Arrangements →</a>
             </div>
 
             <div class="service-card">
@@ -1058,15 +1357,148 @@
                 <div class="badge">In Development</div>
             </div>
 
-            <div class="musical-hero arrangements-card">
+            <div class="musical-hero arrangements-card" style="cursor:pointer;" onclick="scrollToSection('theatre-showcase')">
                 <img src="images/arrangements-poster.jpg" alt="Arrangements - A George Michael & Wham! Tribute Dramedy">
                 <div class="arrangements-overlay">
                     <h3>Arrangements</h3>
-                    <p>A George Michael & Wham! tribute dramedy featuring live band, complicated cocktails, and interactive theatre.</p>
-                    <div class="badge">In Development</div>
+                    <p>A George Michael & Wham! tribute dramedy featuring live band, complicated cocktails, and interactive theatre. July 16–25, 2026.</p>
+                    <div class="badge">Explore Below ↓</div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Interactive Theatre Showcase -->
+    <section class="theatre-showcase" id="theatre-showcase">
+
+        <!-- Top Marquee -->
+        <div class="theatre-marquee marquee-top">
+            <div class="theatre-marquee-track">
+                <span>ARRANGEMENTS</span><span>INTERACTIVE THEATRE</span><span>GEORGE MICHAEL</span><span>CHARLOTTE 2026</span><span>LIVE BAND</span><span>COCKTAILS</span>
+                <span>ARRANGEMENTS</span><span>INTERACTIVE THEATRE</span><span>GEORGE MICHAEL</span><span>CHARLOTTE 2026</span><span>LIVE BAND</span><span>COCKTAILS</span>
+                <span>ARRANGEMENTS</span><span>INTERACTIVE THEATRE</span><span>GEORGE MICHAEL</span><span>CHARLOTTE 2026</span><span>LIVE BAND</span><span>COCKTAILS</span>
+            </div>
+        </div>
+
+        <div class="theatre-showcase-inner">
+            <div class="section-title">Arrangements — A Modern Dramedy</div>
+            <p class="section-subtitle">
+                Featuring the music of George Michael. An intimate, interactive theatre experience where you shape the story.
+            </p>
+
+            <div class="theatre-about">
+                <div class="theatre-about-text">
+                    <p>
+                        On one charged night at a queer bar, a couple tests the limits of their open "arrangement" while the people around them reveal the agreements they've made about love, sex, money, and safety.
+                    </p>
+                    <p>
+                        Nothing here is "natural"—every relationship is an arrangement someone agreed to, or didn't.
+                    </p>
+                    <p class="highlight-text">
+                        This isn't a show about George Michael. It's a contemporary story about us—scored with his timeless music.
+                    </p>
+                </div>
+                <div class="theatre-about-image">
+                    <img src="images/arrangements-poster.jpg" alt="Arrangements - A George Michael & Wham! Tribute Dramedy">
+                </div>
+            </div>
+
+            <div class="theatre-features">
+                <div class="theatre-feature">
+                    <div class="theatre-feature-icon">👥</div>
+                    <h4>Interactive</h4>
+                    <p>Your vote determines the ending</p>
+                </div>
+                <div class="theatre-feature">
+                    <div class="theatre-feature-icon">🎸</div>
+                    <h4>Live Band</h4>
+                    <p>5-piece band performing live</p>
+                </div>
+                <div class="theatre-feature">
+                    <div class="theatre-feature-icon">🍸</div>
+                    <h4>Cocktails</h4>
+                    <p>Complicated drinks included</p>
+                </div>
+                <div class="theatre-feature">
+                    <div class="theatre-feature-icon">❤️</div>
+                    <h4>Intimate</h4>
+                    <p>150-person capacity</p>
+                </div>
+            </div>
+
+            <div class="theatre-tracklist-header">
+                <h3>Music & Sound World</h3>
+                <p>11 iconic tracks shaping the emotional arc of the show</p>
+            </div>
+
+            <div class="theatre-tracklist">
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Freedom!</div>
+                    <div class="theatre-track-note">Wham! — Opening statement</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Soul Free</div>
+                    <div class="theatre-track-note">Wham! — Desire & consent</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Amazing</div>
+                    <div class="theatre-track-note">George Michael — Wonder & connection</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Everything She Wants</div>
+                    <div class="theatre-track-note">Wham! — Money & emotional labor</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Father Figure</div>
+                    <div class="theatre-track-note">George Michael — Power dynamics</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Cowboys and Angels</div>
+                    <div class="theatre-track-note">George Michael — Vulnerability & revelation</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Spinning the Wheel</div>
+                    <div class="theatre-track-note">George Michael — Late-night reckoning</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Don't Let the Sun Go Down on Me</div>
+                    <div class="theatre-track-note">George Michael — Emotional climax</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">One More Try</div>
+                    <div class="theatre-track-note">George Michael — Path A finale</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Waiting for the Day</div>
+                    <div class="theatre-track-note">George Michael — Path B finale</div>
+                </div>
+                <div class="theatre-track">
+                    <div class="theatre-track-title">Freedom! '90</div>
+                    <div class="theatre-track-note">George Michael — Company finale</div>
+                </div>
+            </div>
+
+            <div class="theatre-details">
+                <div class="theatre-detail">July 16–25, 2026</div>
+                <div class="theatre-detail">Charlotte, NC</div>
+                <div class="theatre-detail">90 Minutes</div>
+                <div class="theatre-detail">From $23.99</div>
+            </div>
+
+            <div class="theatre-cta-row">
+                <a href="https://arrangements.jasonplusproductions.com" class="theatre-cta" target="_blank" rel="noopener noreferrer">Visit Arrangements Site →</a>
+            </div>
+        </div>
+
+        <!-- Bottom Marquee -->
+        <div class="theatre-marquee marquee-bottom">
+            <div class="theatre-marquee-track">
+                <span>A MODERN DRAMEDY</span><span>JULY 2026</span><span>CHARLOTTE NC</span><span>YOUR VOTE DETERMINES THE ENDING</span>
+                <span>A MODERN DRAMEDY</span><span>JULY 2026</span><span>CHARLOTTE NC</span><span>YOUR VOTE DETERMINES THE ENDING</span>
+                <span>A MODERN DRAMEDY</span><span>JULY 2026</span><span>CHARLOTTE NC</span><span>YOUR VOTE DETERMINES THE ENDING</span>
+            </div>
+        </div>
+
     </section>
 
     <!-- Newsletter Section -->
