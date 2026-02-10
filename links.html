@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>Jason Plus Productions | Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #050508;
+            color: #c8ccd4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #8B2D8F;
+            --secondary: #00C9A7;
+            --tertiary: #FFB703;
+            --accent-pink: #E91E8C;
+            --accent-blue: #00A9FF;
+            --gold: #d4af37;
+        }
+
+        /* Fog layer 1 — upper left cloud mass */
+        .fog-1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 30%, rgba(25, 22, 55, 0.8) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 70% 65%, rgba(18, 16, 42, 0.5) 0%, transparent 65%),
+                radial-gradient(ellipse 100% 70% at 50% 90%, rgba(12, 12, 30, 0.7) 0%, transparent 55%);
+            animation: fog1 40s ease-in-out infinite;
+        }
+
+        @keyframes fog1 {
+            0%, 100% { opacity: 0.6; }
+            50%      { opacity: 1; }
+        }
+
+        /* Fog layer 2 — right side cloud mass, offset timing */
+        .fog-2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 65% 55% at 75% 25%, rgba(30, 25, 60, 0.6) 0%, transparent 65%),
+                radial-gradient(ellipse 70% 45% at 25% 70%, rgba(22, 18, 48, 0.5) 0%, transparent 60%),
+                radial-gradient(ellipse 55% 40% at 60% 50%, rgba(20, 18, 45, 0.4) 0%, transparent 55%);
+            animation: fog2 55s ease-in-out infinite;
+        }
+
+        @keyframes fog2 {
+            0%, 100% { opacity: 0.9; }
+            50%      { opacity: 0.5; }
+        }
+
+        /* Fog layer 3 — thick ground-level haze */
+        .fog-3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 120% 50% at 50% 100%, rgba(10, 10, 25, 0.9) 0%, transparent 50%),
+                radial-gradient(ellipse 90% 40% at 30% 85%, rgba(15, 12, 35, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 35% at 70% 90%, rgba(18, 15, 40, 0.5) 0%, transparent 45%),
+                radial-gradient(ellipse 50% 50% at 50% 40%, rgba(16, 14, 38, 0.35) 0%, transparent 55%);
+            animation: fog3 35s ease-in-out infinite;
+        }
+
+        @keyframes fog3 {
+            0%, 100% { opacity: 0.7; }
+            35%      { opacity: 1; }
+            70%      { opacity: 0.8; }
+        }
+
+        /* Spotlight — static beams, gentle breathing */
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                conic-gradient(from 200deg at 15% 0%, rgba(180, 200, 255, 0.07) 0deg, transparent 22deg),
+                conic-gradient(from 320deg at 85% 0%, rgba(180, 200, 255, 0.05) 0deg, transparent 18deg),
+                conic-gradient(from 250deg at 50% 0%, rgba(212, 175, 55, 0.035) 0deg, transparent 15deg);
+            animation: spotlightBreath 25s ease-in-out infinite;
+        }
+
+        @keyframes spotlightBreath {
+            0%, 100% { opacity: 0.5; }
+            50%      { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 480px;
+            padding: 2rem 1.25rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Profile */
+        .profile {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), 0 0 60px rgba(139, 45, 143, 0.15);
+            margin-bottom: 1rem;
+        }
+
+        .profile h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            margin-bottom: 0.35rem;
+        }
+
+        .profile p {
+            color: #8a8f9a;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Section labels */
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(212, 175, 55, 0.5);
+            margin-top: 1.5rem;
+            margin-bottom: 0.6rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Links */
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 200, 255, 0.06);
+            border-radius: 12px;
+            color: #c8ccd4;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn:hover {
+            background: rgba(10, 10, 20, 0.75);
+            border-color: rgba(212, 175, 55, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.08);
+        }
+
+        .link-btn:active {
+            transform: translateY(0);
+        }
+
+        .link-icon {
+            font-size: 1.3rem;
+            width: 28px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .link-text {
+            flex: 1;
+        }
+
+        .link-subtitle {
+            font-size: 0.75rem;
+            color: #6b7080;
+            font-weight: 400;
+            margin-top: 0.15rem;
+        }
+
+        .link-arrow {
+            color: rgba(212, 175, 55, 0.35);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* Featured link (Arrangements) */
+        .link-btn.featured {
+            background: rgba(10, 10, 20, 0.7);
+            border-color: rgba(212, 175, 55, 0.2);
+            border-left: 2px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .link-btn.featured:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            border-left-color: var(--gold);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .link-btn.featured .link-text {
+            color: #e0e2e8;
+        }
+
+        .badge-new {
+            font-size: 0.6rem;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        /* Social row */
+        .socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 200, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a8f9a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.25s ease;
+        }
+
+        .social-icon:hover {
+            background: rgba(10, 10, 20, 0.8);
+            border-color: rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .links-footer {
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+        .links-footer a {
+            color: #3a3d45;
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.2s;
+        }
+
+        .links-footer a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+
+            .profile-img {
+                width: 85px;
+                height: 85px;
+            }
+
+            .profile h1 {
+                font-size: 1.3rem;
+            }
+
+            .link-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fog-1"></div>
+    <div class="fog-2"></div>
+    <div class="fog-3"></div>
+    <div class="spotlight"></div>
+
+    <div class="container">
+
+        <!-- Profile -->
+        <div class="profile">
+            <img src="images/jason-hackner.jpg" alt="Jason Hackner" class="profile-img">
+            <h1>Jason Plus Productions</h1>
+            <p>Interactive Theater | Vocal Studio | Live Music<br>Charlotte, NC</p>
+        </div>
+
+        <!-- Featured -->
+        <div class="section-label">Now Casting</div>
+        <div class="links">
+            <a href="https://jasonplusproductions.com/auditions.html" class="link-btn featured">
+                <span class="link-icon">🎭</span>
+                <span class="link-text">
+                    Auditions
+                    <div class="link-subtitle">Arrangements — Interactive Theatre (July 2026)</div>
+                </span>
+                <span class="badge-new">Open</span>
+            </a>
+        </div>
+
+        <!-- Main links -->
+        <div class="section-label">Explore</div>
+        <div class="links">
+            <a href="https://arrangements.jasonplusproductions.com" class="link-btn featured" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon">🎬</span>
+                <span class="link-text">
+                    Arrangements
+                    <div class="link-subtitle">A George Michael & Wham! interactive dramedy</div>
+                </span>
+                <span class="badge-new">New</span>
+            </a>
+
+            <a href="https://vocalstudio.jasonplusproductions.com" class="link-btn" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon">🎤</span>
+                <span class="link-text">
+                    Jason Hackner Vocal Studio
+                    <div class="link-subtitle">Professional voice coaching in Charlotte</div>
+                </span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+
+            <a href="https://themlc.jasonplusproductions.com" class="link-btn" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon">🎸</span>
+                <span class="link-text">
+                    Jason Plus The MLC
+                    <div class="link-subtitle">Classic R&B & George Michael tribute band</div>
+                </span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+
+            <a href="https://jasonplusproductions.com/merch.html" class="link-btn">
+                <span class="link-icon">🛍️</span>
+                <span class="link-text">
+                    Merch Store
+                    <div class="link-subtitle">T-shirts, posters, stickers & more</div>
+                </span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+
+            <a href="https://jasonplusproductions.com" class="link-btn">
+                <span class="link-icon">🌐</span>
+                <span class="link-text">
+                    JasonPlusProductions.com
+                    <div class="link-subtitle">Our full website</div>
+                </span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+        </div>
+
+        <!-- Contact -->
+        <div class="section-label">Connect</div>
+        <div class="links">
+            <a href="https://www.instagram.com/jasonplusproductions" class="link-btn" target="_blank" rel="noopener noreferrer">
+                <span class="link-icon">📸</span>
+                <span class="link-text">Instagram</span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+
+            <a href="mailto:jasonplusproductions@gmail.com" class="link-btn">
+                <span class="link-icon">📧</span>
+                <span class="link-text">Email Us</span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+
+            <a href="tel:+17042738399" class="link-btn">
+                <span class="link-icon">📞</span>
+                <span class="link-text">(704) 273-8399</span>
+                <span class="link-arrow">&rsaquo;</span>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="links-footer">
+            <a href="https://jasonplusproductions.com">&copy; 2026 Jason Plus Productions</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
