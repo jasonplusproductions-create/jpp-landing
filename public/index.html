@@ -1,1 +1,1051 @@
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src https://www.youtube.com;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <title>Jason Plus Productions | Interactive Theater & Musical Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Color Variables */
+        :root {
+            --primary: #8B2D8F;
+            --secondary: #00C9A7;
+            --tertiary: #FFB703;
+            --accent-pink: #E91E8C;
+            --accent-blue: #00A9FF;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.2);
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(139, 45, 143, 0.3);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cccccc;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            transition: color 0.3s ease;
+        }
+
+        /* Subdomain Links */
+        .subdomain-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .subdomain-links li a {
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .subdomain-links li:nth-child(1) a {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .subdomain-links li:nth-child(1) a:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .subdomain-links li:nth-child(2) a {
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+
+        .subdomain-links li:nth-child(2) a:hover {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+        .subdomain-links li:nth-child(3) a:not(.nav-coming-soon) {
+            color: var(--tertiary);
+            border: 1px solid var(--tertiary);
+        }
+
+        .subdomain-links li:nth-child(3) a:not(.nav-coming-soon):hover {
+            background-color: var(--tertiary);
+            color: #000;
+        }
+
+        .subdomain-links li:nth-child(4) a {
+            color: var(--accent-pink);
+            border: 1px solid var(--accent-pink);
+        }
+
+        .subdomain-links li:nth-child(4) a:hover {
+            background-color: var(--accent-pink);
+            color: #fff;
+        }
+
+        .nav-coming-soon {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            color: #666;
+            border: 1px solid #444;
+            cursor: default;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 45, 143, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 201, 167, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 50%, #00A9FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #999999;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #E91E8C 0%, #8B2D8F 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(139, 45, 143, 0.3);
+        }
+
+        /* Section Headers */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #bbbbbb;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #1a1a1a;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: #cccccc;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background-color: rgba(139, 45, 143, 0.1);
+            padding: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .stat-box:nth-child(2) {
+            background-color: rgba(0, 201, 167, 0.1);
+            border-left-color: var(--secondary);
+        }
+
+        .stat-box:nth-child(3) {
+            background-color: rgba(233, 30, 140, 0.1);
+            border-left-color: var(--accent-pink);
+        }
+
+        .stat-box:nth-child(4) {
+            background-color: rgba(0, 169, 255, 0.1);
+            border-left-color: var(--accent-blue);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #999999;
+            margin-top: 0.5rem;
+        }
+
+        /* Productions Grid */
+        .productions {
+            background-color: #0f0f0f;
+        }
+
+        .productions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .production-card {
+            background-color: #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.15);
+            border-top: 4px solid var(--primary);
+        }
+
+        .production-card:nth-child(2) {
+            border-top-color: var(--secondary);
+        }
+
+        .production-card:nth-child(3) {
+            border-top-color: var(--accent-pink);
+        }
+
+        .production-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(139, 45, 143, 0.25);
+        }
+
+        .production-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e5e5e5 0%, #d0d0d0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .production-card:nth-child(1) .production-image {
+            background: linear-gradient(135deg, rgba(139, 45, 143, 0.1) 0%, rgba(139, 45, 143, 0.2) 100%);
+        }
+
+        .production-card:nth-child(2) .production-image {
+            background: linear-gradient(135deg, rgba(0, 201, 167, 0.1) 0%, rgba(0, 201, 167, 0.2) 100%);
+        }
+
+        .production-card:nth-child(3) .production-image {
+            background: linear-gradient(135deg, rgba(233, 30, 140, 0.1) 0%, rgba(233, 30, 140, 0.2) 100%);
+        }
+
+        .production-content {
+            padding: 1.5rem;
+        }
+
+        .production-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .production-category {
+            font-size: 0.85rem;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .production-description {
+            font-size: 0.95rem;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Upcoming Musicals */
+        .upcoming {
+            background-color: #1a1a1a;
+        }
+
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .musical-hero {
+            color: #fff;
+            padding: 3rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .upcoming-grid > :nth-child(1) {
+            background: linear-gradient(135deg, #8B2D8F 0%, #E91E8C 100%);
+        }
+
+        .upcoming-grid > :nth-child(2) {
+            background: linear-gradient(135deg, #00C9A7 0%, #00A9FF 100%);
+        }
+
+        .musical-hero h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .musical-hero p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .musical-hero .badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            width: fit-content;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #0f0f0f;
+            text-align: center;
+        }
+
+        .contact-box {
+            background-color: #1a1a1a;
+            padding: 3rem;
+            border-radius: 4px;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 2px 12px rgba(139, 45, 143, 0.15);
+            border: 1px solid rgba(139, 45, 143, 0.2);
+        }
+
+        .contact-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .contact-box p {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Services Hub */
+        .services-hub {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 5rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(139, 45, 143, 0.2);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+            border: 1px solid rgba(139, 45, 143, 0.2);
+        }
+
+        .service-card:nth-child(2) {
+            border-top-color: var(--secondary);
+            border-color: rgba(0, 201, 167, 0.2);
+        }
+
+        .service-card:nth-child(3) {
+            border-top-color: var(--tertiary);
+            border-color: rgba(255, 183, 3, 0.2);
+        }
+
+        .service-card:nth-child(4) {
+            border-top-color: var(--accent-pink);
+            border-color: rgba(233, 30, 140, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 40px rgba(139, 45, 143, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-icon-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        /* About Image */
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(139, 45, 143, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Arrangements Card Styles */
+        .arrangements-card {
+            background: #000 !important;
+            padding: 0 !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .arrangements-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+        }
+
+        .arrangements-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .arrangements-overlay h3 {
+            color: #D4AF37;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arrangements-overlay p {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arrangements-overlay .badge {
+            background: rgba(212, 175, 55, 0.3);
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-cta {
+            display: inline-block;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .service-cta:hover {
+            color: #fff;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-blue) 100%);
+        }
+
+        .service-cta.coming-soon {
+            color: #888;
+            border: 1px solid #555;
+            cursor: default;
+        }
+
+        .service-cta.coming-soon:hover {
+            color: #888;
+            background: transparent;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-container {
+                align-items: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .subdomain-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .hero {
+                margin-top: 140px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .productions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-image img {
+                max-height: 400px;
+                object-fit: cover;
+            }
+
+            .arrangements-card img {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo">Jason Plus Productions</a>
+            <ul class="nav-links">
+                <li><a href="#vocal-studio">Vocal Studio</a></li>
+                <li><a href="https://themlc.jasonplusproductions.com" class="nav-link-mlc" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank'); return false;">The MLC</a></li>
+                <li><a href="#merch-cards">Merch</a></li>
+                <li><a href="#interactive-theatre">Interactive Theatre</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#past-work">Past Work</a></li>
+                <li><a href="#upcoming">Upcoming</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Jason Plus Productions</h1>
+                <p class="hero-tagline">Interactive Theater | Artistic Innovation | Community Impact</p>
+                <p class="hero-desc">Your creative hub for vocal performance, live music experiences, and groundbreaking, interactive theater.</p>
+                <a href="#services" class="btn btn-hero">Explore Our Services</a>
+            </div>
+        </section>
+
+        <section id="links" class="section section-links">
+            <div class="container">
+                <div class="links-block">
+                    <h1 class="links-title">Jason Plus Productions — Project & Studio Links</h1>
+
+                    <h2>ARRANGEMENTS — Official Project Site</h2>
+                    <p><a href="https://themlc.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://themlc.jasonplusproductions.com</a></p>
+
+                    <h2>Jason Plus Productions — Main Site</h2>
+                    <p><a href="https://jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://jasonplusproductions.com</a></p>
+
+                    <h2>Jason Hackner Vocal Studio</h2>
+                    <p><a href="https://vocal-studio.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://vocal-studio.jasonplusproductions.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section section-services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div id="vocal-studio" class="service-card">
+                        <span class="card-icon" aria-hidden="true">🦩</span>
+                        <h3>Jason Hackner Vocal Studio</h3>
+                        <p>Professional vocal coaching.</p>
+                        <a href="https://vocal-studio.jasonplusproductions.com" class="card-link" target="_blank" rel="noopener noreferrer">Visit Vocal Studio →</a>
+                    </div>
+                    <div id="interactive-theatre" class="service-card">
+                        <span class="card-icon" aria-hidden="true">🎭</span>
+                        <h3>Interactive Theatre</h3>
+                        <p>Groundbreaking theater experiences.</p>
+                        <span class="btn-coming-soon">Coming Soon</span>
+                    </div>
+                    <div id="merch" class="service-card">
+                        <span class="card-icon" aria-hidden="true">🛍</span>
+                        <h3>Merchandise</h3>
+                        <p>Official show merchandise.</p>
+                        <a href="#merch-cards" class="card-link">Shop Merch →</a>
+                    </div>
+                    <a href="https://themlc.jasonplusproductions.com" class="service-card service-card-link" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank'); return false;">
+                        <span class="card-icon" aria-hidden="true">🎸</span>
+                        <h3>Jason Plus The MLC</h3>
+                        <p>Classic 80s 90s R&B and George Michael Tribute band.</p>
+                        <span class="btn-coming-soon">Coming Soon</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="mlc" class="section section-mlc">
+            <div class="container">
+                <h2>Jason Plus The MLC</h2>
+                <p class="section-intro">Classic 80s & 90s R&B and George Michael tribute — music, learning, and community.</p>
+                <div class="mlc-tile-cards">
+                    <a href="https://themlc.jasonplusproductions.com" class="mlc-tile" target="_blank" rel="noopener noreferrer" style="cursor:pointer;">
+                        <span class="mlc-tile-icon" aria-hidden="true">🎸</span>
+                        <h3>Visit The MLC</h3>
+                        <p>Music, learning & community</p>
+                    </a>
+                    <a href="#performance-clips" class="mlc-tile" style="cursor:pointer;">
+                        <span class="mlc-tile-icon" aria-hidden="true">🎬</span>
+                        <h3>Performance Clips</h3>
+                        <p>Watch on YouTube</p>
+                    </a>
+                    <a href="https://youtu.be/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" class="mlc-tile" target="_blank" rel="noopener noreferrer" style="cursor:pointer;">
+                        <span class="mlc-tile-icon" aria-hidden="true">▶</span>
+                        <h3>YouTube Playlist</h3>
+                        <p>Full playlist</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="merch-cards" class="section section-merch">
+            <div class="container">
+                <h2>MLC MERCH</h2>
+                <p class="section-intro merch-subtitle">WEAR THE SOUND</p>
+                <div class="merch-grid">
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-hoodie.jpg" alt="Premium Hoodie" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Hoodie</div>
+                        </div>
+                        <h3>PREMIUM HOODIE</h3>
+                        <p class="merch-desc">Premium (Black or Cream). Soft feel, stage-ready warmth.</p>
+                        <p class="merch-price">$53.99</p>
+                        <span class="merch-label">UNISEX</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-mug.jpg" alt="Coffee Mug" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Mug</div>
+                        </div>
+                        <h3>COFFEE MUG (15OZ)</h3>
+                        <p class="merch-desc">15oz ceramic mug—perfect for rehearsal nights and early gigs.</p>
+                        <p class="merch-price">$16.99</p>
+                        <span class="merch-label">CERAMIC</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-tote.jpg" alt="Jazz Tote Bag" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Tote</div>
+                        </div>
+                        <h3>JAZZ TOTE BAG</h3>
+                        <p class="merch-desc">All-over print tote—everyday carry with vintage energy.</p>
+                        <p class="merch-price">$28.99</p>
+                        <span class="merch-label">ALL-OVER PRINT</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                    <article class="merch-card">
+                        <div class="merch-image-wrap">
+                            <img src="assets/merch-sticker.jpg" alt="Vinyl Record Sticker" class="merch-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling?.classList.add('visible');">
+                            <div class="merch-placeholder" aria-hidden="true">Sticker</div>
+                        </div>
+                        <h3>VINYL RECORD STICKER (3x3)</h3>
+                        <p class="merch-desc">Perfect add-on at shows—clean, durable vinyl.</p>
+                        <p class="merch-price">$8.99</p>
+                        <span class="merch-label">3x3</span>
+                        <div class="merch-actions">
+                            <a href="https://themlc.jasonplusproductions.com" class="btn-merch" target="_blank" rel="noopener noreferrer">BUY WITH STRIPE</a>
+                            <a href="#contact" class="btn-merch btn-merch-outline">QUESTIONS</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section section-about">
+            <div class="container">
+                <h2>About Jason Plus Productions.</h2>
+                <div class="about-layout">
+                    <div class="about-image-wrap">
+                        <img class="about-image" src="assets/jason-plus-mlc-2021.jpg" alt="Jason Plus the MLC" width="400" height="533">
+                    </div>
+                    <div class="about-text">
+                        <h3>Theater, Music & Vocal Excellence Through Active Participation</h3>
+                        <p>Jason Plus Productions is dedicated to creating exceptional vocal, theatrical, and live music experiences. We bring together performance, community, and innovation to deliver interactive theater and memorable events.</p>
+                        <p>Our mission is to empower artists and audiences through participation, from vocal coaching and tribute performances to full-scale interactive musicals.</p>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box stat-pink"><span class="stat-num">15+</span><span class="stat-label">Performance Team</span></div>
+                    <div class="stat-box stat-teal"><span class="stat-num">2</span><span class="stat-label">Interactive Musicals</span></div>
+                    <div class="stat-box stat-purple"><span class="stat-num">100+</span><span class="stat-label">Live Performances</span></div>
+                    <div class="stat-box stat-blue"><span class="stat-num">Charlotte</span><span class="stat-label">Base of Operations</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="past-work" class="section section-past">
+            <div class="container">
+                <h2>Past Productions & Performance.</h2>
+                <p class="section-intro">Highlights from our performances and theatrical productions.</p>
+                <div class="past-grid">
+                    <a href="#performance-clips" class="past-card past-card-mlc">
+                        <span class="card-icon">🎬</span>
+                        <h3>Jason Plus The MLC</h3>
+                        <p>Performance Clips</p>
+                        <span class="past-desc">Professional performance footage from Jason Plus The MLC tribute band.</span>
+                    </a>
+                    <div class="past-card past-card-photo">
+                        <span class="card-icon">📷</span>
+                        <h3>Band Photography & Flyers</h3>
+                        <p>Live Performance</p>
+                        <span class="past-desc">Concert and event photography.</span>
+                    </div>
+                    <div class="past-card past-card-theater">
+                        <span class="card-icon">🎤</span>
+                        <h3>GrandNight for Singing</h3>
+                        <p>Theater Production</p>
+                        <span class="past-desc">Theatrical production highlights.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance-clips" class="section section-clips">
+            <div class="container">
+                <h2>Jason Plus The MLC — Performance Clips</h2>
+                <p>Watch our performance clips on YouTube.</p>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" title="Jason Plus Performance Clips" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <p class="video-link-wrap">
+                    <a href="https://youtu.be/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                </p>
+            </div>
+        </section>
+
+        <section id="upcoming" class="section section-upcoming">
+            <div class="container">
+                <h2>Upcoming Interactive Musicals.</h2>
+                <p class="section-intro">New projects in development.</p>
+                <div class="upcoming-grid">
+                    <div class="upcoming-card upcoming-faith">
+                        <h3>Faith and Freedom</h3>
+                        <p>Themes: Identity, Growth, Community, Empowerment.</p>
+                        <span class="btn-in-dev">In Development</span>
+                    </div>
+                    <div class="upcoming-card upcoming-arrangements">
+                        <div class="arrangements-brand">JASONPLUS PRODUCTIONS</div>
+                        <h3>ARRANGEMENTS</h3>
+                        <p class="arrangements-sub">A Modern Rhapsody</p>
+                        <p class="arrangements-feat">featuring the music of George Michael</p>
+                        <p>An immersive musical experience.</p>
+                        <span class="btn-in-dev">In Development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section section-gallery">
+            <div class="container">
+                <h2>Gallery.</h2>
+                <p class="section-intro">Performance and production photos.</p>
+                <div class="gallery-grid">
+                    <img src="assets/jason-plus-mlc-2021.jpg" alt="Jason Plus the MLC" class="gallery-img" loading="lazy">
+                    <img src="assets/piano-performance.jpg" alt="Piano performance" class="gallery-img" loading="lazy">
+                    <img src="assets/group-selfie.jpg" alt="Group" class="gallery-img" loading="lazy">
+                    <img src="assets/band-camp-north-end.jpg" alt="Band at Camp North End" class="gallery-img" loading="lazy">
+                    <img src="assets/stage-duo.jpg" alt="Stage performance" class="gallery-img" loading="lazy">
+                    <img src="assets/choir-performance.jpg" alt="Choir performance" class="gallery-img" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-contact">
+            <div class="container">
+                <h2>Get In Touch.</h2>
+                <div class="contact-card">
+                    <h3>Interested In Our Work?</h3>
+                    <p>We'd love to hear from you. Reach out for bookings, collaborations, or general inquiries.</p>
+                    <ul class="contact-list">
+                        <li><a href="mailto:jasonplusproductions@gmail.com">jasonplusproductions@gmail.com</a></li>
+                        <li><a href="tel:+17042732389">(704) 273-2389</a></li>
+                        <li><a href="https://instagram.com/JasonPlusProductions" target="_blank" rel="noopener noreferrer">@JasonPlusProductions</a> (Instagram)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Jason Plus Productions. All rights reserved | Charlotte, North Carolina</p>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        function goToMlc(e) {
+            var a = e.currentTarget;
+            if (!a || !a.href || a.href.indexOf('themlc') === -1) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (a.target === '_blank') {
+                window.open(a.href, '_blank', 'noopener,noreferrer');
+            } else {
+                window.location.href = a.href;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var mlcLinks = document.querySelectorAll('a[href*="themlc.jasonplusproductions.com"]');
+            mlcLinks.forEach(function (a) {
+                a.addEventListener('click', goToMlc, true);
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
+
+

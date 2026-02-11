@@ -894,11 +894,3 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
-/* Web-optimized images */
-img { 
-  max-width: 100%; 
-  height: auto; 
-  object-fit: cover; 
-  image-rendering: -webkit-optimize-contrast; 
-}
-.merch-card img { width: 280px !important; height: 280px !important; }

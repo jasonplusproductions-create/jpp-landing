@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -735,10 +735,6 @@
             }
         }
     </style>
-  <link rel="stylesheet" href="jpp-improvements.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -772,12 +768,12 @@
         <section id="links" class="section section-links">
             <div class="container">
                 <div class="links-block">
-                    <h1 class="links-title">Jason Plus Productions â€” Project & Studio Links</h1>
+                    <h1 class="links-title">Jason Plus Productions — Project & Studio Links</h1>
 
-                    <h2>ARRANGEMENTS â€” Official Project Site</h2>
+                    <h2>ARRANGEMENTS — Official Project Site</h2>
                     <p><a href="https://themlc.jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://themlc.jasonplusproductions.com</a></p>
 
-                    <h2>Jason Plus Productions â€” Main Site</h2>
+                    <h2>Jason Plus Productions — Main Site</h2>
                     <p><a href="https://jasonplusproductions.com" target="_blank" rel="noopener noreferrer">https://jasonplusproductions.com</a></p>
 
                     <h2>Jason Hackner Vocal Studio</h2>
@@ -791,25 +787,25 @@
                 <h2>Our Services</h2>
                 <div class="services-grid">
                     <div id="vocal-studio" class="service-card">
-                        <span class="card-icon" aria-hidden="true">ðŸ¦©</span>
+                        <span class="card-icon" aria-hidden="true">🦩</span>
                         <h3>Jason Hackner Vocal Studio</h3>
                         <p>Professional vocal coaching.</p>
-                        <a href="https://vocal-studio.jasonplusproductions.com" class="card-link" target="_blank" rel="noopener noreferrer">Visit Vocal Studio â†’</a>
+                        <a href="https://vocal-studio.jasonplusproductions.com" class="card-link" target="_blank" rel="noopener noreferrer">Visit Vocal Studio →</a>
                     </div>
                     <div id="interactive-theatre" class="service-card">
-                        <span class="card-icon" aria-hidden="true">ðŸŽ­</span>
+                        <span class="card-icon" aria-hidden="true">🎭</span>
                         <h3>Interactive Theatre</h3>
                         <p>Groundbreaking theater experiences.</p>
                         <span class="btn-coming-soon">Coming Soon</span>
                     </div>
                     <div id="merch" class="service-card">
-                        <span class="card-icon" aria-hidden="true">ðŸ›</span>
+                        <span class="card-icon" aria-hidden="true">🛍</span>
                         <h3>Merchandise</h3>
                         <p>Official show merchandise.</p>
-                        <a href="#merch-cards" class="card-link">Shop Merch â†’</a>
+                        <a href="#merch-cards" class="card-link">Shop Merch →</a>
                     </div>
                     <a href="https://themlc.jasonplusproductions.com" class="service-card service-card-link" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank'); return false;">
-                        <span class="card-icon" aria-hidden="true">ðŸŽ¸</span>
+                        <span class="card-icon" aria-hidden="true">🎸</span>
                         <h3>Jason Plus The MLC</h3>
                         <p>Classic 80s 90s R&B and George Michael Tribute band.</p>
                         <span class="btn-coming-soon">Coming Soon</span>
@@ -821,20 +817,20 @@
         <section id="mlc" class="section section-mlc">
             <div class="container">
                 <h2>Jason Plus The MLC</h2>
-                <p class="section-intro">Classic 80s & 90s R&B and George Michael tribute â€” music, learning, and community.</p>
+                <p class="section-intro">Classic 80s & 90s R&B and George Michael tribute — music, learning, and community.</p>
                 <div class="mlc-tile-cards">
                     <a href="https://themlc.jasonplusproductions.com" class="mlc-tile" target="_blank" rel="noopener noreferrer" style="cursor:pointer;">
-                        <span class="mlc-tile-icon" aria-hidden="true">ðŸŽ¸</span>
+                        <span class="mlc-tile-icon" aria-hidden="true">🎸</span>
                         <h3>Visit The MLC</h3>
                         <p>Music, learning & community</p>
                     </a>
                     <a href="#performance-clips" class="mlc-tile" style="cursor:pointer;">
-                        <span class="mlc-tile-icon" aria-hidden="true">ðŸŽ¬</span>
+                        <span class="mlc-tile-icon" aria-hidden="true">🎬</span>
                         <h3>Performance Clips</h3>
                         <p>Watch on YouTube</p>
                     </a>
                     <a href="https://youtu.be/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" class="mlc-tile" target="_blank" rel="noopener noreferrer" style="cursor:pointer;">
-                        <span class="mlc-tile-icon" aria-hidden="true">â–¶</span>
+                        <span class="mlc-tile-icon" aria-hidden="true">▶</span>
                         <h3>YouTube Playlist</h3>
                         <p>Full playlist</p>
                     </a>
@@ -867,7 +863,7 @@
                             <div class="merch-placeholder" aria-hidden="true">Mug</div>
                         </div>
                         <h3>COFFEE MUG (15OZ)</h3>
-                        <p class="merch-desc">15oz ceramic mugâ€”perfect for rehearsal nights and early gigs.</p>
+                        <p class="merch-desc">15oz ceramic mug—perfect for rehearsal nights and early gigs.</p>
                         <p class="merch-price">$16.99</p>
                         <span class="merch-label">CERAMIC</span>
                         <div class="merch-actions">
@@ -881,7 +877,7 @@
                             <div class="merch-placeholder" aria-hidden="true">Tote</div>
                         </div>
                         <h3>JAZZ TOTE BAG</h3>
-                        <p class="merch-desc">All-over print toteâ€”everyday carry with vintage energy.</p>
+                        <p class="merch-desc">All-over print tote—everyday carry with vintage energy.</p>
                         <p class="merch-price">$28.99</p>
                         <span class="merch-label">ALL-OVER PRINT</span>
                         <div class="merch-actions">
@@ -895,7 +891,7 @@
                             <div class="merch-placeholder" aria-hidden="true">Sticker</div>
                         </div>
                         <h3>VINYL RECORD STICKER (3x3)</h3>
-                        <p class="merch-desc">Perfect add-on at showsâ€”clean, durable vinyl.</p>
+                        <p class="merch-desc">Perfect add-on at shows—clean, durable vinyl.</p>
                         <p class="merch-price">$8.99</p>
                         <span class="merch-label">3x3</span>
                         <div class="merch-actions">
@@ -935,19 +931,19 @@
                 <p class="section-intro">Highlights from our performances and theatrical productions.</p>
                 <div class="past-grid">
                     <a href="#performance-clips" class="past-card past-card-mlc">
-                        <span class="card-icon">ðŸŽ¬</span>
+                        <span class="card-icon">🎬</span>
                         <h3>Jason Plus The MLC</h3>
                         <p>Performance Clips</p>
                         <span class="past-desc">Professional performance footage from Jason Plus The MLC tribute band.</span>
                     </a>
                     <div class="past-card past-card-photo">
-                        <span class="card-icon">ðŸ“·</span>
+                        <span class="card-icon">📷</span>
                         <h3>Band Photography & Flyers</h3>
                         <p>Live Performance</p>
                         <span class="past-desc">Concert and event photography.</span>
                     </div>
                     <div class="past-card past-card-theater">
-                        <span class="card-icon">ðŸŽ¤</span>
+                        <span class="card-icon">🎤</span>
                         <h3>GrandNight for Singing</h3>
                         <p>Theater Production</p>
                         <span class="past-desc">Theatrical production highlights.</span>
@@ -958,7 +954,7 @@
 
         <section id="performance-clips" class="section section-clips">
             <div class="container">
-                <h2>Jason Plus The MLC â€” Performance Clips</h2>
+                <h2>Jason Plus The MLC — Performance Clips</h2>
                 <p>Watch our performance clips on YouTube.</p>
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/BUC669sBie0?list=PLkTvOZWnJemhzdjLxs_NVs-5u6TyKeNoC" title="Jason Plus Performance Clips" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1049,9 +1045,7 @@
         });
     })();
     </script>
-  <script src="jpp-improvements.js"></script>
 </body>
 </html>
-
 
 
