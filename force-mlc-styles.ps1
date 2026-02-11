@@ -1,0 +1,233 @@
+# Force MLC Styles - Nuclear Option
+
+Write-Host "Forcing MLC styles..." -ForegroundColor Cyan
+
+# Backup current CSS
+Copy-Item "jpp-improvements.css" "jpp-improvements.css.backup"
+Write-Host "Created backup" -ForegroundColor Green
+
+# Create brand new CSS file with MLC styles
+$newCSS = @'
+/* MLC-INSPIRED COMPLETE OVERRIDE */
+/* Higher specificity to override everything */
+
+:root {
+  --mlc-dark: #0a0a0a;
+  --mlc-navy: #1a2332;
+  --mlc-gold: #d4af37;
+}
+
+/* RESET AND BASE */
+* { box-sizing: border-box; }
+
+html, body {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* TYPOGRAPHY - Bebas Neue */
+h1, h2, h3, h4, h5, h6,
+.hero h1, section h2, #about h2 {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  color: #b0b0b0 !important;
+}
+
+h1 { font-size: 5rem !important; }
+h2 { font-size: 3.5rem !important; }
+h3 { font-size: 2rem !important; }
+
+p, span, div {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1.1rem !important;
+  line-height: 1.8 !important;
+  color: #a0a0a0 !important;
+  font-weight: 300 !important;
+}
+
+/* SECTIONS */
+section, main section, body section {
+  padding: 100px 40px !important;
+  background-color: #0a0a0a !important;
+  max-width: 100% !important;
+}
+
+section:nth-child(even) {
+  background-color: #1a2332 !important;
+}
+
+/* GOLD UNDERLINES */
+h2::after, section h2::after {
+  content: '' !important;
+  display: block !important;
+  width: 80px !important;
+  height: 3px !important;
+  background: #d4af37 !important;
+  margin: 20px auto !important;
+}
+
+/* NAVIGATION */
+nav, header nav {
+  background: rgba(10, 10, 10, 0.98) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+nav a, header nav a {
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+}
+
+nav a:hover {
+  color: #d4af37 !important;
+}
+
+/* BUTTONS - GOLD */
+.cta-primary,
+a[href="#services"],
+button,
+.hero a,
+section a[class*="cta"] {
+  background: #d4af37 !important;
+  color: #000000 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  padding: 18px 40px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 0.9rem !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4) !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+.cta-primary:hover,
+a[href="#services"]:hover {
+  background: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ABOUT SECTION */
+#about, section#about {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr !important;
+  gap: 60px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+#about img {
+  width: 100% !important;
+  max-width: 600px !important;
+  height: auto !important;
+  border: 3px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* GALLERY - BORDERED */
+#gallery, section#gallery {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+#gallery > div {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+#gallery > div > div,
+#gallery div[class*="grid"] > div {
+  height: 320px !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+#gallery > div > div:hover {
+  border-color: #d4af37 !important;
+  transform: translateY(-5px) !important;
+}
+
+#gallery img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: grayscale(20%) !important;
+}
+
+#gallery img:hover {
+  filter: grayscale(0%) !important;
+}
+
+/* SERVICE CARDS */
+#services > div > div,
+.service-card {
+  background: rgba(26, 35, 50, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 50px 40px !important;
+}
+
+#services > div > div:hover {
+  background: rgba(26, 35, 50, 0.9) !important;
+  border-color: #d4af37 !important;
+  transform: translateY(-10px) !important;
+}
+
+/* MERCH */
+#merch-cards article {
+  background: rgba(26, 35, 50, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+#merch-cards article:hover {
+  border-color: #d4af37 !important;
+}
+
+#merch-cards article img {
+  height: 280px !important;
+}
+
+/* CONTACT */
+#contact {
+  background: linear-gradient(135deg, #1a2332, #0a0a0a) !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+/* SCROLL BUTTON */
+.scroll-to-top {
+  background: #d4af37 !important;
+  color: #000 !important;
+  font-weight: bold !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  h1 { font-size: 3rem !important; }
+  h2 { font-size: 2.5rem !important; }
+  #about { grid-template-columns: 1fr !important; }
+  section { padding: 60px 20px !important; }
+}
+'@
+
+$newCSS | Out-File -FilePath "jpp-improvements.css" -Encoding UTF8 -NoNewline
+
+Write-Host "Overwrote CSS with MLC styles" -ForegroundColor Green
+Write-Host ""
+Write-Host "Deploying..." -ForegroundColor Blue
+
+git add jpp-improvements.css
+git commit -m "feat: force apply MLC styling"
+git push origin main
+
+Write-Host ""
+Write-Host "Done! Check site in 2-3 minutes" -ForegroundColor Green
