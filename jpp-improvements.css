@@ -31,3 +31,31 @@ nav a:hover { color: #D946EF !important; }
 .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
 .fade-in-section.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) { h1 { font-size: 2rem !important; } h2 { font-size: 1.75rem !important; } section { padding: 60px 16px !important; } }
+/* Fix oversized images */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* About section image */
+  #about img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Gallery images - already handled but reinforcing */
+  #gallery img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  
+  /* Merch images */
+  #merch-cards img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+  }
