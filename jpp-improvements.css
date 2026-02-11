@@ -58,4 +58,27 @@ img {
     width: 100% !important;
     height: 250px !important;
     object-fit: cover !important;
-  }
+  }/* IMAGE SIZING FIXES */
+
+/* Fix About section image */
+#about img {
+  max-width: 600px !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+
+/* Fix Merch product images */
+#merch-cards img {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Ensure all images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
