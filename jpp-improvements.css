@@ -31,7 +31,39 @@ nav a:hover { color: #D946EF !important; }
 .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
 .fade-in-section.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) { h1 { font-size: 2rem !important; } h2 { font-size: 1.75rem !important; } section { padding: 60px 16px !important; } }
-/* Fix oversized images */
+/* Fix oversized images *//* COMPREHENSIVE IMAGE FIXES */
+img { max-width: 100%; height: auto; }
+
+#about img {
+  max-width: 400px !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+#gallery img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+}
+
+#gallery > div > div {
+  height: 300px !important;
+  overflow: hidden;
+}
+
+#merch-cards article img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+}
+
+#merch-cards article {
+  overflow: hidden !important;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -102,19 +134,7 @@ img {
   margin: 0 auto !important;
 }
 
-/* Gallery images - set specific height */
-#gallery img {
-  width: 100% !important;
-  height: 300px !important;
-  object-fit: cover !important;
-}
 
-#gallery > div > div {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  height: 300px !important;
-}
 
 /* MERCH IMAGE FIX */
 #merch-cards article img {
@@ -138,4 +158,40 @@ img {
 iframe {
   max-width: 100% !important;
   height: auto !important;
+}
+
+
+/* AGGRESSIVE GALLERY FIX */
+#gallery {
+  padding: 60px 20px !important;
+}
+
+#gallery > div {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 16px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+#gallery > div > div,
+#gallery div[class*="grid"] > div {
+  position: relative !important;
+  width: 100% !important;
+  height: 280px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+}
+
+#gallery img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+#gallery > div > div:hover img,
+#gallery div[class*="grid"] > div:hover img {
+  transform: scale(1.05) !important;
 }
